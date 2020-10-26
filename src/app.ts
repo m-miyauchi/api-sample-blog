@@ -21,7 +21,7 @@ app.get('/post', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事詳細取得
-app.get('/post', (req: Request, res: Response) => {
+app.get('/post/:id', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事新規投稿
@@ -29,7 +29,7 @@ app.post('/post/create', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事編集
-app.put('/post/update', (req: Request, res: Response) => {
+app.put('/post/update/:id', (req: Request, res: Response) => {
   res.send('');
 });
 
