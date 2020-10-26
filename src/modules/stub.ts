@@ -66,7 +66,7 @@ export default class Stub {
   private get genArticle(): Article {
     return {
       title: faker.lorem.words(),
-      body: faker.lorem.sentences(),
+      body: faker.lorem.paragraphs(15),
       author: {
         memberId: this.memberId,
         name: this.memberName,
