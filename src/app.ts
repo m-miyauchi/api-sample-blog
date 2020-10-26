@@ -27,15 +27,15 @@ app.get('/article/:id', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事新規投稿
-app.post('/article/create', (req: Request, res: Response) => {
+app.post('/article', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事編集
-app.put('/article/update', (req: Request, res: Response) => {
+app.put('/article', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事削除
-app.delete('/article/deleter/:id', (req: Request, res: Response) => {
+app.delete('/article/:id', (req: Request, res: Response) => {
   res.send('');
 });
 
