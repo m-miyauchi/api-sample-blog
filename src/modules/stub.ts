@@ -8,8 +8,10 @@ import { Article } from '../types/article';
 import { ArticleSummary } from '../types/article_summary';
 
 export class Stub {
+    // constants
     private memberId: number = 1276;
-    private memberName: string ='Charlotte De Witte ';
+    private memberName: string ='Charlotte De Witte';
+    // mock data
     private articles: ArticleSummary[];
     private articleCreatedAt: string;
     private articleUpdatedAt: string;
@@ -48,6 +50,8 @@ export class Stub {
         }
     }
 
+    /*
+
     public postArticle() {
 
     }
@@ -59,6 +63,8 @@ export class Stub {
     public deleteArticle() {
         
     }
+
+    */
 
     private get genArticles():ArticleSummary[] {
         const result: ArticleSummary[] = [];
