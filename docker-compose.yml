@@ -1,0 +1,11 @@
+version: '3.0'
+services:
+  db-test:
+    container_name: db
+    image: postgres:12.4-alpine
+    volumes:
+      - ./.data/db_data/postgres_test:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: 1111

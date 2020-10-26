@@ -1,7 +1,9 @@
 import express, { Request, Response, Express } from 'express';
 import morgan from 'morgan';
 import { SERVER_PORT } from './constants/server_port';
+import createDBConnection from './modules/create_db_connection';
 
+createDBConnection();
 const app: Express = express();
 app.use(morgan('dev'));
 
@@ -37,6 +39,6 @@ app.delete('/article/deleter/:id', (req: Request, res: Response) => {
   res.send('');
 });
 
-app.listen(SERVER_PORT, () => {
+app.listen(SERVER_PORT, async () => {
   console.log(`Server Started: http://127.0.0.1:${SERVER_PORT}`);
 });
