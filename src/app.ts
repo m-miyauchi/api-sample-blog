@@ -3,8 +3,8 @@ import morgan from 'morgan';
 import { SERVER_PORT } from './constants/server_port';
 import createDBConnection from './modules/create_db_connection';
 
-const app: Express = express();
 createDBConnection();
+const app: Express = express();
 
 app.use(morgan('dev'));
 
