@@ -8,10 +8,10 @@ export default class CreateDBConnection {
         name: connectionName,
         type: 'postgres',
         host: process.env.NODE_ENV === 'production' ? 'db' : '127.0.0.1',
-        port: process.env.NODE_ENV === 'production' ? 5432 : 5431,
+        port: 5432,
         username: 'postgres',
         password: '1111',
-        database: 'commmit',
+        database: 'blog',
         synchronize: true,
         logging: false,
         entities: [
