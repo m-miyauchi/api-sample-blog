@@ -31,7 +31,7 @@ app.post('/article/create', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事編集
-app.put('/article/update/:id', (req: Request, res: Response) => {
+app.put('/article/update', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事削除
