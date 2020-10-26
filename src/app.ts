@@ -33,7 +33,6 @@ app.put('/post/update', (req: Request, res: Response) => {
   res.send('');
 });
 
-
 app.listen(SERVER_PORT, () => {
   console.log(`Server Started: http://127.0.0.1:${SERVER_PORT}`);
 });
