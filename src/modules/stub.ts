@@ -71,7 +71,7 @@ export default class Stub {
     for (let i = 0; i < 10; i++) {
       const articleSummary: ArticleSummary = {
         title: faker.lorem.words(),
-        summary: faker.lorem.sentences(),
+        summary: `${faker.lorem.sentences().substring(0, 49)}...`,
         updatedAt: dayjs().subtract(i, 'day').toString(),
       };
       result.push(articleSummary);
