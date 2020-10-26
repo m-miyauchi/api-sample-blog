@@ -1,8 +1,7 @@
 import { createConnection, Connection } from 'typeorm';
 const connectionName = 'app';
 
-export default class CreateDBConnection {
-  public async createConnection(): Promise<Connection> {
+export default async function CreateDBConnection(): Promise<Connection> {
     try {
       const connection: Connection = await createConnection({
         name: connectionName,
@@ -35,5 +34,4 @@ export default class CreateDBConnection {
     } catch (error) {
       throw new Error(error);
     }
-  }
 }
