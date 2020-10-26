@@ -12,7 +12,7 @@ function main() {
   app.use(morgan('dev'));
   app.use(helmet());
   const stub = new Stub();
-  
+
   // routes
   app.get('/', (req: Request, res: Response) => {
     res.send('API for sample blog app.');
@@ -45,7 +45,7 @@ function main() {
   app.delete('/article/:id', (req: Request, res: Response) => {
     res.send('');
   });
-  
+
   app.listen(SERVER_PORT, async () => {
     console.log(`Server Started: http://127.0.0.1:${SERVER_PORT}`);
   });
