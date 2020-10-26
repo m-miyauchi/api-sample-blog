@@ -7,7 +7,7 @@ import { GetArticleResponse } from '../types/api/get_article_response';
 import { Article } from '../types/article';
 import { ArticleSummary } from '../types/article_summary';
 
-export class Stub {
+export default class Stub {
     // constants
     private memberId: number = 1276;
     private memberName: string ='Charlotte De Witte';
