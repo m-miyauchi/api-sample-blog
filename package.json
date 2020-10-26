@@ -15,5 +15,35 @@
   "bugs": {
     "url": "https://github.com/m-miyauchi/api-sample-blog/issues"
   },
-  "homepage": "https://github.com/m-miyauchi/api-sample-blog#readme"
+  "homepage": "https://github.com/m-miyauchi/api-sample-blog#readme",
+  "dependencies": {
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@types/morgan": "^1.9.0",
+    "@types/node": "^14.14.2",
+    "@typescript-eslint/eslint-plugin": "^4.5.0",
+    "@typescript-eslint/parser": "^4.5.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint": "^7.12.0",
+    "eslint-config-prettier": "^6.14.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.1.2",
+    "ts-jest": "^26.4.2",
+    "ts-loader": "^8.0.6",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3",
+    "webpack": "^5.2.0",
+    "webpack-cli": "^4.1.0",
+    "webpack-node-externals": "^2.5.2"
+  },
 }
