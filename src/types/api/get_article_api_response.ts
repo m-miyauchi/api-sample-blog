@@ -1,6 +1,6 @@
-import { Article} from '../article';
+import { ArticleSummary } from '../article_summary'
 
 // GET /article の返し値
 export type GetArticleRespose = {
-    articles: Article[]
+    articles: ArticleSummary[]
 }
