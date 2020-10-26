@@ -17,19 +17,23 @@ app.put('/logout', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事一覧取得
-app.get('/post', (req: Request, res: Response) => {
+app.get('/article', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事詳細取得
-app.get('/post/:id', (req: Request, res: Response) => {
+app.get('/article/:id', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事新規投稿
-app.post('/post/create', (req: Request, res: Response) => {
+app.post('/article/create', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事編集
-app.put('/post/update/:id', (req: Request, res: Response) => {
+app.put('/article/update/:id', (req: Request, res: Response) => {
+  res.send('');
+});
+// 記事削除
+app.delete('/article/deleter/:id', (req: Request, res: Response) => {
   res.send('');
 });
 
