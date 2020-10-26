@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "API for new commer training",
   "main": "src/app.ts",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "dev": "nodemon",
+    "lint": "eslint --fix src",
+    "start": "node dist/bundle.js"
   },
   "repository": {
     "type": "git",
