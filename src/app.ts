@@ -3,13 +3,11 @@ import morgan from 'morgan';
 import { SERVER_PORT } from './constants/server_port';
 
 const app: Express = express();
-
 app.use(morgan('dev'));
 
 app.get('/', (req: Request, res: Response) => {
   res.send('API for sample blog app.');
 });
-
 // ログイン
 app.put('/login', (req: Request, res: Response) => {
   res.send('');
