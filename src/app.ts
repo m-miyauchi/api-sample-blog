@@ -23,7 +23,7 @@ function main() {
   });
   // ログアウト
   app.put('/logout', (req: Request, res: Response) => {
-    res.send('');
+    res.status(204).end();
   });
   // 記事 一覧取得
   app.get('/articles', (req: Request, res: Response) => {
@@ -35,15 +35,15 @@ function main() {
   });
   // 記事 新規投稿
   app.post('/article', (req: Request, res: Response) => {
-    res.send('');
+    res.status(204).end();
   });
   // 記事 編集
   app.put('/article', (req: Request, res: Response) => {
-    res.send('');
+    res.status(204).end();
   });
   // 記事 削除
   app.delete('/article/:id', (req: Request, res: Response) => {
-    res.send('');
+    res.status(204).end();
   });
 
   app.listen(SERVER_PORT, async () => {
