@@ -6,7 +6,7 @@
 
   "scripts": {
     "build": "webpack",
-    "dev": "nodemon",
+    "dev": "docker-compose up -d && sleep 4 && nodemon",
     "lint": "eslint --fix src",
     "start": "node dist/bundle.js"
   },
