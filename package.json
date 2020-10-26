@@ -17,7 +17,14 @@
   },
   "homepage": "https://github.com/m-miyauchi/api-sample-blog#readme",
   "dependencies": {
-    "reflect-metadata": "^0.1.13"
+    "body-parser": "^1.19.0",
+    "dayjs": "^1.9.4",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "morgan": "^1.10.0",
+    "pg": "^8.4.1",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.2.28"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -45,5 +52,5 @@
     "webpack": "^5.2.0",
     "webpack-cli": "^4.1.0",
     "webpack-node-externals": "^2.5.2"
-  },
+  }
 }
