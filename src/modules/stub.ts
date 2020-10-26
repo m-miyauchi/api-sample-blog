@@ -50,22 +50,6 @@ export default class Stub {
     };
   }
 
-  /*
-
-    public postArticle() {
-
-    }
-    
-    public putArticle() {
-
-    }
-    
-    public deleteArticle() {
-        
-    }
-
-    */
-
   private get genArticles(): ArticleSummary[] {
     const result: ArticleSummary[] = [];
     for (let i = 0; i < 10; i++) {
