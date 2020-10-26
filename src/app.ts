@@ -19,7 +19,7 @@ app.put('/logout', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事 一覧取得
-app.get('/article', (req: Request, res: Response) => {
+app.get('/articles', (req: Request, res: Response) => {
   res.send('');
 });
 // 記事 詳細取得
