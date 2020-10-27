@@ -21,24 +21,28 @@ export default class Member {
     email: string,
     password: string
   ): Promise<PutLoginResponse> {
+    const result: PutLoginResponse = {
+      isSuccessLogin: false,
+    };
     try {
-      const member = await this.repository.findOne({
+      const m = await this.repository.findOne({
         where: {
           email,
           password,
         },
       });
+      if (m !== undefined) {
+        result.isSuccessLogin = true;
+        result.member.id = m.id;
+        result.member.name = m.name;
+        result.member.email = m.email;
+        // TODO: 認証ロジック作ったらつなぎこみ
+        result.token = `token_${m.name}`;
+      }
+      return result;
     } catch (error) {
-      throw new Error(error);
+      result.error = error;
+      return result;
     }
-  }
-
-  private createToken(mebmerId: number): Promise<AuthTokenEntity> {
-    try {
-      const repository: Repository<AuthTokenEntity> = await getRepository(
-        AuthTokenEntity,
-        this.connectionName
-      );
-    } catch (error) {}
   }
 }
