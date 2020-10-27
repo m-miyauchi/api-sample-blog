@@ -1,9 +1,10 @@
 import dayjs from 'dayjs';
 import { getRepository, Connection, Repository } from 'typeorm';
 import { AuthToken as AuthTokenEntity } from '../../entity/auth_token';
+import CONNECTION_NAME from '../../constants/default_db_connection';
 
 export default class AuthToken {
-  private connectionName = 'app';
+  private connectionName = CONNECTION_NAME;
   private repository: Repository<AuthTokenEntity>;
 
   constructor(connection?: Connection) {

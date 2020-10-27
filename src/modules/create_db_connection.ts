@@ -1,10 +1,10 @@
 import { createConnection, Connection } from 'typeorm';
-const connectionName = 'app';
+import CONNECTION_NAME from '../constants/default_db_connection';
 
 export default async function CreateDBConnection(): Promise<Connection> {
   try {
     const connection: Connection = await createConnection({
-      name: connectionName,
+      name: CONNECTION_NAME,
       type: 'postgres',
       host: process.env.NODE_ENV === 'production' ? 'db' : '127.0.0.1',
       port: 5432,

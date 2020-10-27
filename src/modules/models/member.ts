@@ -2,9 +2,10 @@ import { getRepository, Connection, Repository } from 'typeorm';
 import { Member as MemberEntity } from '../../entity/member';
 import { PutLoginResponse } from '../../types/api/put_login_response';
 import AuthTokenModel from './auth_token';
+import CONNECTION_NAME from '../../constants/default_db_connection';
 
 export default class Member {
-  private connectionName = 'app';
+  private connectionName = CONNECTION_NAME;
   private repository: Repository<MemberEntity>;
 
   constructor(connection?: Connection) {
