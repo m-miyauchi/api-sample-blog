@@ -33,9 +33,7 @@ export default class Article {
     }
   }
 
-  public async getArticles(
-    params: PutArticleRequestParams
-  ): Promise<ArticleEnity[]> {
+  public async getArticles(): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
     try {
       a = await this.repository.find();
