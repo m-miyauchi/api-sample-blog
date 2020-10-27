@@ -14,7 +14,7 @@
       "sourceType": "module"
     },
     "rules": {
-      "@typescript-eslint/camelcase": "warn",
+      "@typescript-eslint/camelcase": "off",
       "prettier/prettier": [
         "error",
         {
