@@ -50,16 +50,16 @@ export default class Member {
     email: string,
     password: string
   ): Promise<MemberEntity> {
-    let m: MemberEntity;
+    let m: MemberEntity | undefined;
     try {
       m = await this.repository.findOne({
         where: {
           email,
-          password,
         },
       });
+      console.log(m);
       if (m === undefined) {
-        m = await this.repository.create({
+        m = await this.repository.save({
           name,
           email,
           password,

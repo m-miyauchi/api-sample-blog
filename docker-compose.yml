@@ -1,8 +1,8 @@
 version: '3.0'
 services:
-  db-test:
+  db:
     container_name: db
-    image: postgres:12.4-alpine
+    image: postgres:11.9-alpine
     volumes:
       - ./.data/db_data/postgres_test:/var/lib/postgresql/data
     ports:
