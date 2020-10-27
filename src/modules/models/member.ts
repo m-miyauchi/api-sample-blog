@@ -45,6 +45,14 @@ export default class Member {
   }
 
   // TODO: ログアウト
+  public async logout(tokenCode: string): Promise<any> {
+    try {
+      const authTokenModel = new AuthTokenModel();
+      return t = await authTokenModel.desiableToken(tokenCode);
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 
   // 内部API
   public async register(

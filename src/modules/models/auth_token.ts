@@ -46,4 +46,18 @@ export default class AuthToken {
     }
     return t;
   }
+
+  public async desiableToken(tokenCode: string): Promise<AuthTokenEntity> {
+    let t: AuthTokenEntity | undefined;
+    try {
+      t = await this.repository.findOne({
+        token: tokenCode,
+        expired_at: MoreThanOrEqual(new Date()),
+      });
+      t.expired = true;
+    } catch (error) {
+      throw new Error(error);
+    }
+    return t;
+  }
 }
