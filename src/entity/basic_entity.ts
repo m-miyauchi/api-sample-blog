@@ -11,8 +11,8 @@ export default abstract class BasicEntity {
   id: number;
 
   @CreateDateColumn({ default: () => 'NOW()' })
-  readonly createdAt?: Date;
+  readonly created_at?: Date;
 
   @UpdateDateColumn({ default: () => 'NOW()' })
-  readonly updatedAt?: Date;
+  readonly updated_at?: Date;
 }
