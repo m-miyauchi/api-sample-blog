@@ -7,6 +7,7 @@ import Stub from './modules/stub';
 // Type
 import { PostArticleRequestParams } from './types/api/post_article_request_params';
 import { PutArticleRequestParams } from './types/api/put_article_request_params';
+import { PutLoginParams } from './types/api/put_login_params';
 
 function main() {
   // setup
@@ -22,7 +23,7 @@ function main() {
   });
 
   // ログイン
-  app.put('/login', (req: Request, res: Response) => {
+  app.put('/login', (req: Request<PutLoginParams>, res: Response) => {
     res.send(stub.putLogin());
   });
   // ログアウト
@@ -52,12 +53,9 @@ function main() {
     }
   );
   // 記事 削除
-  app.delete(
-    '/article/:id',
-    (req: Request<PutArticleRequestParams>, res: Response) => {
-      res.status(204).end();
-    }
-  );
+  app.delete('/article/:id', (req: Request, res: Response) => {
+    res.status(204).end();
+  });
 
   app.listen(SERVER_PORT, async () => {
     console.log(`Server Started: http://127.0.0.1:${SERVER_PORT}`);
