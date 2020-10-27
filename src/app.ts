@@ -4,6 +4,10 @@ import helmet from 'helmet';
 import { SERVER_PORT } from './constants/server_port';
 import createDBConnection from './modules/create_db_connection';
 import Stub from './modules/stub';
+// Type
+import { PostArticleRequestParams } from './types/api/post_article_request_params';
+import { PutArticleRequestParams } from './types/api/put_article_request_params';
+import { PutLoginParams } from './types/api/put_login_params';
 
 function main() {
   // setup
@@ -17,8 +21,9 @@ function main() {
   app.get('/', (req: Request, res: Response) => {
     res.send('API for sample blog app.');
   });
+
   // ログイン
-  app.put('/login', (req: Request, res: Response) => {
+  app.put('/login', (req: Request<PutLoginParams>, res: Response) => {
     res.send(stub.putLogin());
   });
   // ログアウト
@@ -34,13 +39,19 @@ function main() {
     res.send(stub.getArticle());
   });
   // 記事 新規投稿
-  app.post('/article', (req: Request, res: Response) => {
-    res.status(204).end();
-  });
+  app.post(
+    '/article',
+    (req: Request<PostArticleRequestParams>, res: Response) => {
+      res.status(204).end();
+    }
+  );
   // 記事 編集
-  app.put('/article', (req: Request, res: Response) => {
-    res.status(204).end();
-  });
+  app.put(
+    '/article',
+    (req: Request<PutArticleRequestParams>, res: Response) => {
+      res.status(204).end();
+    }
+  );
   // 記事 削除
   app.delete('/article/:id', (req: Request, res: Response) => {
     res.status(204).end();
