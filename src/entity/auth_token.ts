@@ -6,9 +6,6 @@ export class AuthToken extends BasicEntity {
   @Column()
   member_id: number;
 
-  @Column({ default: 0 })
-  authority: number;
-
   @Column()
   token: string;
 
