@@ -2,6 +2,7 @@ import { getRepository, Connection, Repository } from 'typeorm';
 import { Member as MemberEntity } from '../../entity/member';
 import { AuthToken as AuthTokenEntity } from '../../entity/auth_token';
 import { PutLoginResponse } from '../../types/api/put_login_response';
+import AuthTokenModel from './auth_token';
 
 export default class Member {
   private connectionName = 'app';
@@ -16,7 +17,6 @@ export default class Member {
     this.repository = getRepository(MemberEntity, this.connectionName);
   }
 
-  // クライアントは、ログインに成功したら別途トークンを入手する必要あり
   public async login(
     email: string,
     password: string
@@ -32,12 +32,13 @@ export default class Member {
         },
       });
       if (m !== undefined) {
+        const authTokenModel = new AuthTokenModel();
+        const tokenEntity = await authTokenModel.createToken(m.id);
         result.isSuccessLogin = true;
         result.member.id = m.id;
         result.member.name = m.name;
         result.member.email = m.email;
-        // TODO: 認証ロジック作ったらつなぎこみ
-        result.token = `token_${m.name}`;
+        result.token = tokenEntity.token;
       }
       return result;
     } catch (error) {
