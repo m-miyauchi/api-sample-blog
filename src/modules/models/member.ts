@@ -44,6 +44,8 @@ export default class Member {
     return result;
   }
 
+  // TODO: ログアウト
+
   // 内部API
   public async register(
     name: string,
