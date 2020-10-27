@@ -1,18 +1,15 @@
 {
-    "compilerOptions": {
-        "target": "ES6",
-        "module": "commonjs",
-        "esModuleInterop": true,
-        "outDir": "./dist/tsc",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "typeRoots": ["node_modules/@types"]
-    },
-    "paths": {
-      "@/*": ["./*"],
-      "@src/*": ["src/*"]
-    },
-    "exclude": [
-      "node_modules"
-    ]
-  }
+  "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "outDir": "./dist/tsc",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "typeRoots": ["node_modules/@types"]
+  },
+  "exclude": [
+    "node_modules",
+    "__tests__"
+  ]
+}
