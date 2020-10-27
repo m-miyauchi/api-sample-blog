@@ -11,4 +11,7 @@ export class Article extends BasicEntity {
 
   @Column()
   author_member_id: number;
+
+  @Column()
+  deleted: boolean;
 }
