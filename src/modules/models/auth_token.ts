@@ -34,7 +34,7 @@ export default class AuthToken {
     }
   }
 
-  public async checkTokenIsEnable(tokenCode: string): Promise<boolean> {
+  public async findEnableToken(tokenCode: string): Promise<AuthTokenEntity> {
     let t: AuthTokenEntity | undefined;
     try {
       t = await this.repository.findOne({
@@ -45,6 +45,6 @@ export default class AuthToken {
       throw new Error(error);
     }
     // 条件を満たすトークンが存在する場合true
-    return t !== undefined;
+    return t;
   }
 }
