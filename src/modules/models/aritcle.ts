@@ -14,4 +14,12 @@ export default class Article {
     }
     this.repository = getRepository(ArticleEnity, this.connectionName);
   }
+
+  public async createArticle() {}
+
+  public async getArticles() {}
+
+  public async updateArticle() {}
+
+  public async deleteArticle() {}
 }
