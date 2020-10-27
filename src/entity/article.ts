@@ -4,11 +4,11 @@ import BasicEntity from './basic_entity';
 @Entity()
 export class Article extends BasicEntity {
   @Column()
-  member_id: number;
+  title: string;
 
   @Column()
-  token: string;
+  body: string;
 
   @Column()
-  expired_at: Date;
+  author_member_id: number;
 }
