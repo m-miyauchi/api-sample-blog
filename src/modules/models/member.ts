@@ -43,7 +43,6 @@ export default class Member {
     return result;
   }
 
-  // TODO: ログアウト
   public async logout(tokenCode: string): Promise<any> {
     try {
       const authTokenModel = new AuthTokenModel();
