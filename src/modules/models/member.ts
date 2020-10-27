@@ -33,7 +33,6 @@ export default class Member {
         const authTokenModel = new AuthTokenModel();
         const tokenEntity = await authTokenModel.createToken(m.id);
         result.isSuccessLogin = true;
-        result.member.id = m.id;
         result.member.name = m.name;
         result.member.email = m.email;
         result.token = tokenEntity.token;
