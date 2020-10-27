@@ -40,6 +40,7 @@ export default class Article {
     }
   }
 
+  // TODO: 必要な値だけにする
   public async getArticles(): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
     try {
