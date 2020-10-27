@@ -66,7 +66,6 @@ export default class Member {
           email,
         },
       });
-      console.log(m);
       if (m === undefined) {
         m = await this.repository.save({
           name,
