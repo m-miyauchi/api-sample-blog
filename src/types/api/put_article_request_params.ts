@@ -1,4 +1,11 @@
-import { PostArticleRequestParams } from './post_article_request_params';
 
 // POST /article のリクエスト時パラメータ
-export type PutArticleRequestParams = PostArticleRequestParams;
+export type PutArticleRequestParams = {
+    memberId: number; // メンバーのシステム管理ID
+    article: {
+      id: number; // 記事のID
+      title: string; // 表題
+      body: string; // 本文
+    };
+  };
+  
