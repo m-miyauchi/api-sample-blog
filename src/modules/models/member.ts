@@ -39,9 +39,6 @@ export default class Member {
         AuthTokenEntity,
         this.connectionName
       );
-
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 }
