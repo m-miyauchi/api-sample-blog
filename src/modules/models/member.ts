@@ -1,6 +1,7 @@
 import { getRepository, Connection, Repository } from 'typeorm';
 import { Member as MemberEntity } from '../../entity/member';
 import { PutLoginResponse } from '../../types/api/put_login_response';
+import { PutLoginParams } from '../../types/api/put_login_params';
 import AuthTokenModel from './auth_token';
 import CONNECTION_NAME from '../../constants/default_db_connection';
 
@@ -17,18 +18,15 @@ export default class Member {
     this.repository = getRepository(MemberEntity, this.connectionName);
   }
 
-  public async login(
-    email: string,
-    password: string
-  ): Promise<PutLoginResponse> {
+  public async login(params: PutLoginParams): Promise<PutLoginResponse> {
     const result: PutLoginResponse = {
       isSuccessLogin: false,
     };
     try {
       const m = await this.repository.findOne({
         where: {
-          email,
-          password,
+          email: params.email,
+          password: params.password,
         },
       });
       if (m !== undefined) {
@@ -40,10 +38,29 @@ export default class Member {
         result.member.email = m.email;
         result.token = tokenEntity.token;
       }
-      return result;
     } catch (error) {
       result.error = error;
-      return result;
     }
+    return result;
+  }
+
+  // 内部API
+  public async register(
+    name: string,
+    email: string,
+    password: string
+  ): Promise<MemberEntity> {
+    // TODO: fix
+    let m: MemberEntity;
+    try {
+      m = await this.repository.create({
+        name,
+        email,
+        password,
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+    return m;
   }
 }
