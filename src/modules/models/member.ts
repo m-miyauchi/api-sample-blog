@@ -3,6 +3,7 @@ import { Member as MemberEntity } from '../../entity/member';
 import { PutLoginResponse } from '../../types/api/put_login_response';
 import { PutLoginParams } from '../../types/api/put_login_params';
 import AuthTokenModel from './auth_token';
+import { AuthToken as AuthTokenEntity } from '../../entity/auth_token';
 import CONNECTION_NAME from '../../constants/default_db_connection';
 
 export default class Member {
@@ -33,7 +34,6 @@ export default class Member {
         const authTokenModel = new AuthTokenModel();
         const tokenEntity = await authTokenModel.createToken(m.id);
         result.isSuccessLogin = true;
-        result.member.id = m.id;
         result.member.name = m.name;
         result.member.email = m.email;
         result.token = tokenEntity.token;
@@ -42,6 +42,16 @@ export default class Member {
       result.error = error;
     }
     return result;
+  }
+
+  public async logout(tokenCode: string): Promise<AuthTokenEntity> {
+    try {
+      const authTokenModel = new AuthTokenModel();
+      const t = await authTokenModel.desiableToken(tokenCode);
+      return t;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 
   // 内部API
@@ -57,7 +67,6 @@ export default class Member {
           email,
         },
       });
-      console.log(m);
       if (m === undefined) {
         m = await this.repository.save({
           name,

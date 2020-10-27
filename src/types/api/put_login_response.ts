@@ -5,7 +5,6 @@ export type PutLoginResponse = {
 
   // ログイン成功時は以下を取得可能
   member?: {
-    id: number; // システムの内部ID
     name: string; // 投稿者名
     email: string; // メールアドレス(ログイン情報)
   };

@@ -1,5 +1,10 @@
 import dayjs from 'dayjs';
-import { getRepository, Connection, Repository } from 'typeorm';
+import {
+  getRepository,
+  Connection,
+  Repository,
+  MoreThanOrEqual,
+} from 'typeorm';
 import { AuthToken as AuthTokenEntity } from '../../entity/auth_token';
 import CONNECTION_NAME from '../../constants/default_db_connection';
 
@@ -27,5 +32,32 @@ export default class AuthToken {
     } catch (error) {
       throw new Error(error);
     }
+  }
+
+  public async findEnableToken(tokenCode: string): Promise<AuthTokenEntity> {
+    let t: AuthTokenEntity | undefined;
+    try {
+      t = await this.repository.findOne({
+        token: tokenCode,
+        expired_at: MoreThanOrEqual(new Date()),
+      });
+    } catch (error) {
+      throw new Error(error);
+    }
+    return t;
+  }
+
+  public async desiableToken(tokenCode: string): Promise<AuthTokenEntity> {
+    let t: AuthTokenEntity | undefined;
+    try {
+      t = await this.repository.findOne({
+        token: tokenCode,
+        expired_at: MoreThanOrEqual(new Date()),
+      });
+      t.expired = true;
+    } catch (error) {
+      throw new Error(error);
+    }
+    return t;
   }
 }

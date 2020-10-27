@@ -11,4 +11,7 @@ export class AuthToken extends BasicEntity {
 
   @Column()
   expired_at: Date;
+
+  @Column()
+  expired: boolean;
 }

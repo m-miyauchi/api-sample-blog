@@ -1,3 +1,3 @@
 export type DeleteArticleRequestParams = {
-    articleId: number // 記事ID
-}
+  articleId: number; // 記事ID
+};
