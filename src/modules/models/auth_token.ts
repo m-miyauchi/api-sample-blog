@@ -44,7 +44,6 @@ export default class AuthToken {
     } catch (error) {
       throw new Error(error);
     }
-    // 条件を満たすトークンが存在する場合true
     return t;
   }
 }
