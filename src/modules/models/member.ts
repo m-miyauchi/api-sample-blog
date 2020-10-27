@@ -3,6 +3,7 @@ import { Member as MemberEntity } from '../../entity/member';
 import { PutLoginResponse } from '../../types/api/put_login_response';
 import { PutLoginParams } from '../../types/api/put_login_params';
 import AuthTokenModel from './auth_token';
+import { AuthToken as AuthTokenEntity } from '../../entity/auth_token';
 import CONNECTION_NAME from '../../constants/default_db_connection';
 
 export default class Member {
@@ -43,7 +44,7 @@ export default class Member {
     return result;
   }
 
-  public async logout(tokenCode: string): Promise<any> {
+  public async logout(tokenCode: string): Promise<AuthTokenEntity> {
     try {
       const authTokenModel = new AuthTokenModel();
       const t = await authTokenModel.desiableToken(tokenCode);
