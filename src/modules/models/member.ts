@@ -48,7 +48,8 @@ export default class Member {
   public async logout(tokenCode: string): Promise<any> {
     try {
       const authTokenModel = new AuthTokenModel();
-      return t = await authTokenModel.desiableToken(tokenCode);
+      const t = await authTokenModel.desiableToken(tokenCode);
+      return t;
     } catch (error) {
       throw new Error(error);
     }
