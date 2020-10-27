@@ -1,6 +1,5 @@
 import { getRepository, Connection, Repository } from 'typeorm';
 import { Member as MemberEntity } from '../../entity/member';
-import { AuthToken as AuthTokenEntity } from '../../entity/auth_token';
 import { PutLoginResponse } from '../../types/api/put_login_response';
 import AuthTokenModel from './auth_token';
 
