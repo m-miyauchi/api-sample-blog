@@ -50,14 +50,23 @@ export default class Member {
     email: string,
     password: string
   ): Promise<MemberEntity> {
-    // TODO: fix
     let m: MemberEntity;
     try {
-      m = await this.repository.create({
-        name,
-        email,
-        password,
+      m = await this.repository.findOne({
+        where: {
+          email,
+          password,
+        },
       });
+      if (m === undefined) {
+        m = await this.repository.create({
+          name,
+          email,
+          password,
+        });
+      } else {
+        throw new Error('Member already exist!');
+      }
     } catch (error) {
       throw new Error(error);
     }
