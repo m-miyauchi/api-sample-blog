@@ -8,7 +8,7 @@ import { PutLoginResponse } from '../types/api/put_login_response';
 const router = express.Router();
 
 // ログイン
-router.put(
+router.post(
   '/',
   async (req: Request<PutLoginParams>, res: Response<PutLoginResponse>) => {
     const memberModel = new MemberModel();

@@ -27,9 +27,9 @@ async function main() {
   }
 
   // routes
-  app.use('login', loginRoute);
-  app.use('logout', logoutRoute);
-  app.use('article', articleRoutes);
+  app.use('/login', loginRoute);
+  app.use('/logout', logoutRoute);
+  app.use('/article', articleRoutes);
   app.get('/', (req: Request, res: Response) => {
     res.send('API for sample blog app.');
   });

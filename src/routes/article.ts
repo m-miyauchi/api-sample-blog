@@ -77,7 +77,7 @@ router.post(
 );
 
 // 記事 編集
-router.put(
+router.post(
   '/',
   async (req: Request<PutArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();

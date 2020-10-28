@@ -11,8 +11,8 @@ describe('ログイン', () => {
       password: 'password',
     };
 
-    const r: PutLoginResponse = await axios.put(
-      `http://127.0.0.1:${SERVER_PORT}/`,
+    const r: PutLoginResponse = await axios.post(
+      `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
     console.log(r);

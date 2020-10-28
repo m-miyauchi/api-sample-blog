@@ -5,7 +5,7 @@ import MemberModel from '../modules/models/member';
 const router = express.Router();
 
 // ログアウト
-router.put('/', async (req: Request, res: Response) => {
+router.post('/', async (req: Request, res: Response) => {
   const memberModel = new MemberModel();
   try {
     // @ts-ignore

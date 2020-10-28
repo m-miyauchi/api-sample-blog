@@ -30,6 +30,7 @@ export default class Member {
           password: params.password,
         },
       });
+      console.log(m, params);
       if (m !== undefined) {
         const authTokenModel = new AuthTokenModel();
         const tokenEntity = await authTokenModel.createToken(m.id);
