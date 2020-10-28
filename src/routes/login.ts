@@ -16,9 +16,6 @@ router.post(
 
     try {
       r = await memberModel.login(req.body);
-      if (r !== void 0) {
-        res.send(r);
-      }
     } catch (error) {
       console.error(error);
     }

@@ -68,6 +68,7 @@ router.post(
       );
       if (a !== void 0) {
         res.status(204).end();
+        return 0;
       }
     } catch (error) {
       console.error(error);
@@ -86,6 +87,7 @@ router.post(
       const a = await articleModel.updateArticle(req.headers.auth, req.body);
       if (a !== void 0) {
         res.status(204).end();
+        return 0;
       }
     } catch (error) {
       console.error(error);
@@ -104,6 +106,7 @@ router.delete(
       const a = await articleModel.deleteArticle(req.headers.auth, req.body);
       if (a !== void 0) {
         res.status(204).end();
+        return 0;
       }
     } catch (error) {
       console.error(error);
