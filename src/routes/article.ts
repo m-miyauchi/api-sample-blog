@@ -71,9 +71,21 @@ router.post(
   }
 );
 // 記事 編集
-router.put('/', (req: Request<PutArticleRequestParams>, res: Response) => {
-  res.status(204).end();
-});
+router.put(
+  '/',
+  async (req: Request<PutArticleRequestParams>, res: Response) => {
+    try {
+      // @ts-ignore
+      const a = await articleModel.updateArticle(req.headers.auth, req.body);
+      if (a !== void 0) {
+        res.status(204).end();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    res.status(400).end();
+  }
+);
 // 記事 削除
 router.delete('/:id', (req: Request, res: Response) => {
   res.status(204).end();
