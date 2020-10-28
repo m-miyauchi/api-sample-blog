@@ -52,9 +52,24 @@ router.get('/:id', async (req: Request, res: Response<GetArticleResponse>) => {
 });
 
 // 記事 新規投稿
-router.post('/', (req: Request<PostArticleRequestParams>, res: Response) => {
-  res.status(204).end();
-});
+router.post(
+  '/',
+  async (req: Request<PostArticleRequestParams>, res: Response) => {
+    try {
+      const a = await articleModel.createArticle(
+        // @ts-ignore
+        req.headers.auth,
+        req.params.article
+      );
+      if (a !== void 0) {
+        res.status(204).end();
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    res.status(400).end();
+  }
+);
 // 記事 編集
 router.put('/', (req: Request<PutArticleRequestParams>, res: Response) => {
   res.status(204).end();

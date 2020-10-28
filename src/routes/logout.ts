@@ -7,7 +7,7 @@ router.put('/', async (req: Request, res: Response) => {
   const memberModel = new MemberModel();
   try {
     // @ts-ignore
-    const t = await memberModel.logout(req.headers.token);
+    const t = await memberModel.logout(req.headers.auth);
     if (t !== void 0) {
       res.status(204).end();
     }
