@@ -81,4 +81,13 @@ export default class Member {
     }
     return m;
   }
+
+  public async findOne(memberId: number): Promise<MemberEntity> {
+    try {
+      const m = await this.repository.findOne(memberId);
+      return m;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 }

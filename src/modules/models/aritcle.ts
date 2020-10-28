@@ -4,7 +4,6 @@ import AuthTokenModel from './auth_token';
 import CONNECTION_NAME from '../../constants/default_db_connection';
 import { PostArticleRequestParams } from '../../types/api/post_article_request_params';
 import { PutArticleRequestParams } from '../../types/api/put_article_request_params';
-import { DeleteArticleRequestParams } from '../../types/api/delte_article_request_params';
 
 export default class Article {
   private connectionName = CONNECTION_NAME;
@@ -40,7 +39,16 @@ export default class Article {
     }
   }
 
-  // TODO: 必要な値だけにする
+  public async getArticle(id: number): Promise<ArticleEnity> {
+    let a: ArticleEnity | undefined;
+    try {
+      a = await this.repository.findOne(id);
+      return a;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   public async getArticles(): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
     try {
@@ -76,13 +84,13 @@ export default class Article {
 
   public async deleteArticle(
     tokenCode: string,
-    params: DeleteArticleRequestParams
+    articleId: number
   ): Promise<ArticleEnity> {
     let a: ArticleEnity | undefined;
     const authTokenModel = new AuthTokenModel();
     const t = await authTokenModel.findEnableToken(tokenCode);
     try {
-      a = await this.repository.findOne(params.articleId);
+      a = await this.repository.findOne(articleId);
       if (a !== undefined) {
         if (a.author_member_id === t.member_id) {
           a.deleted = true;
