@@ -1,13 +1,25 @@
 import express, { Request, Response } from 'express';
+import MemberModel from '../modules/models/member';
 import { PutLoginParams } from '../types/api/put_login_params';
-import Stub from '../modules/stub';
+import { PutLoginResponse } from '../types/api/put_login_response';
 
 const router = express.Router();
-const stub = new Stub();
 
 // ログイン
-router.put('/', (req: Request<PutLoginParams>, res: Response) => {
-  res.send(stub.putLogin());
+router.put('/', async (req: Request<PutLoginParams>, res: Response) => {
+  const memberModel = new MemberModel();
+  let r: PutLoginResponse;
+
+  try {
+    r = await memberModel.login(req.body);
+    if (r !== void 0) {
+      res.send(r);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+
+  res.send(r);
 });
 
 export default router;
