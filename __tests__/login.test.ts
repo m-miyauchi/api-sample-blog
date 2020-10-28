@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { PutLoginParams } from '../src/types/api/put_login_params';
 import { PutLoginResponse } from '../src/types/api/put_login_response';
 // constants
@@ -11,11 +11,11 @@ describe('ログイン', () => {
       password: 'password',
     };
 
-    const r: PutLoginResponse = await axios.post(
+    const r: AxiosResponse<PutLoginResponse> = await axios.post(
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
     console.log(r);
-    expect(r.isSuccessLogin).toBeTruthy();
+    expect(r.data.isSuccessLogin).toBeTruthy();
   });
 });
