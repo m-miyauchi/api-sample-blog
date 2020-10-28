@@ -4,10 +4,6 @@ import helmet from 'helmet';
 import { SERVER_PORT } from './constants/server_port';
 import createDBConnection from './modules/create_db_connection';
 import Stub from './modules/stub';
-// Type
-import { PostArticleRequestParams } from './types/api/post_article_request_params';
-import { PutArticleRequestParams } from './types/api/put_article_request_params';
-import { PutLoginParams } from './types/api/put_login_params';
 
 function main() {
   // setup

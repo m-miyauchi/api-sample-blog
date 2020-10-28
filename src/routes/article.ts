@@ -1,5 +1,10 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
+import { PostArticleRequestParams } from '../types/api/post_article_request_params';
+import { PutArticleRequestParams } from '../types/api/put_article_request_params';
+import Stub from '../modules/stub';
+
 const router = express.Router();
+const stub = new Stub();
 
 // 記事 一覧取得
 router.get('/article', (req: Request, res: Response) => {
