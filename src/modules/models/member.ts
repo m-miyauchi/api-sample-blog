@@ -30,8 +30,8 @@ export default class Member {
           password: params.password,
         },
       });
-      console.log(m, params);
-      if (m !== undefined) {
+
+      if (m !== void 0) {
         const authTokenModel = new AuthTokenModel();
         const tokenEntity = await authTokenModel.createToken(m.id);
         result.isSuccessLogin = true;
@@ -41,7 +41,9 @@ export default class Member {
       }
     } catch (error) {
       result.error = error;
+      console.error(error);
     }
+    console.log(result);
     return result;
   }
 

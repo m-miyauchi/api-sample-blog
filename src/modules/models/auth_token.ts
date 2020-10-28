@@ -27,6 +27,7 @@ export default class AuthToken {
         member_id: mebmerId,
         token: `T_${mebmerId}_${dayjs().toISOString()}`,
         expired_at: dayjs().add(4, 'week'),
+        expired: false,
       });
       return token;
     } catch (error) {

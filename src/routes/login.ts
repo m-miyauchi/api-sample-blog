@@ -13,14 +13,13 @@ router.post(
   async (req: Request<PutLoginParams>, res: Response<PutLoginResponse>) => {
     const memberModel = new MemberModel();
     let r: PutLoginResponse;
-    console.log(req.body);
 
     try {
       r = await memberModel.login(req.body);
     } catch (error) {
       console.error(error);
     }
-
+    console.log('response');
     res.send(r);
   }
 );
