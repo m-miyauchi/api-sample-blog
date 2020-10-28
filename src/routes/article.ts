@@ -88,17 +88,20 @@ router.put(
   }
 );
 // 記事 削除
-router.delete('/:id', async (req: Request, res: Response) => {
-  try {
-    // @ts-ignore
-    const a = await articleModel.deleteArticle(req.headers.auth, req.params.id);
-    if (a !== void 0) {
-      res.status(204).end();
+router.delete(
+  '/',
+  async (req: Request<DeleteArticleRequestParams>, res: Response) => {
+    try {
+      // @ts-ignore
+      const a = await articleModel.deleteArticle(req.headers.auth, req.body);
+      if (a !== void 0) {
+        res.status(204).end();
+      }
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
+    res.status(400).end();
   }
-  res.status(400).end();
-});
+);
 
 export default router;
