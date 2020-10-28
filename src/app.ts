@@ -1,13 +1,14 @@
 import express, { Request, Response, Express } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import { SERVER_PORT } from './constants/server_port';
+// modules
 import createDBConnection from './modules/create_db_connection';
-import Stub from './modules/stub';
 // routes
 import loginRoutes from './routes/login';
 import logoutRoutes from './routes/logout';
 import articleRoutes from './routes/article';
+// constants
+import { SERVER_PORT } from './constants/server_port';
 
 function main() {
   // setup
@@ -16,14 +17,14 @@ function main() {
   app.use(morgan('dev'));
   app.use(helmet());
 
+  // routes
   app.use('login', loginRoutes);
   app.use('logout', logoutRoutes);
   app.use('article', articleRoutes);
-
-  // routes
   app.get('/', (req: Request, res: Response) => {
     res.send('API for sample blog app.');
   });
+
   app.listen(SERVER_PORT, async () => {
     console.log(`Server Started: http://127.0.0.1:${SERVER_PORT}`);
   });
