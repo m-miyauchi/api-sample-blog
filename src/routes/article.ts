@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
+// modules
 import ArticleModel from '../modules/models/aritcle';
 import MemberModel from '../modules/models/member';
+// type
 import { PostArticleRequestParams } from '../types/api/post_article_request_params';
 import { PutArticleRequestParams } from '../types/api/put_article_request_params';
 import { GetArticlesRespose } from '../types/api/get_articles_response';

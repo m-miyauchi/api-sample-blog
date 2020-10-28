@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
+// modules
 import MemberModel from '../modules/models/member';
+// type
 import { PutLoginParams } from '../types/api/put_login_params';
 import { PutLoginResponse } from '../types/api/put_login_response';
 

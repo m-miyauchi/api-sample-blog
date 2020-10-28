@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
+// modules
 import MemberModel from '../modules/models/member';
+
 const router = express.Router();
 
 // ログアウト
