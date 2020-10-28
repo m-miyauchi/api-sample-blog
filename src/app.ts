@@ -15,6 +15,16 @@ async function main() {
   const app: Express = express();
   app.use(morgan('dev'));
   app.use(helmet());
+  if (app.get('env') === 'development') {
+    app.use(function (req, res, next) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+      );
+      next();
+    });
+  }
 
   // routes
   app.use('login', loginRoute);
