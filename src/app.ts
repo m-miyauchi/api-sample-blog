@@ -10,9 +10,8 @@ import articleRoutes from './routes/article';
 // constants
 import { SERVER_PORT } from './constants/server_port';
 
-function main() {
+async function main() {
   // setup
-  createDBConnection();
   const app: Express = express();
   app.use(morgan('dev'));
   app.use(helmet());
@@ -27,6 +26,7 @@ function main() {
 
   app.listen(SERVER_PORT, async () => {
     console.log(`Server Started: http://127.0.0.1:${SERVER_PORT}`);
+    await createDBConnection();
   });
 }
 

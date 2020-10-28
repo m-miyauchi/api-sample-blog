@@ -11,13 +11,13 @@ import { DeleteArticleRequestParams } from '../types/api/delte_article_request_p
 import { ArticleSummary } from '../types/article_summary';
 
 const router = express.Router();
-const articleModel = new ArticleModel();
 
 // 記事 一覧取得
 router.get('/', async (req: Request, res: Response<GetArticlesRespose>) => {
   const r: GetArticlesRespose = {
     articles: [],
   };
+  const articleModel = new ArticleModel();
   const articles = articleModel.getArticles();
 
   const tmp: ArticleSummary[] = (await articles).map((item) => {
@@ -36,6 +36,7 @@ router.get('/', async (req: Request, res: Response<GetArticlesRespose>) => {
 // 記事 詳細取得
 router.get('/:id', async (req: Request, res: Response<GetArticleResponse>) => {
   const r: GetArticleResponse = {};
+  const articleModel = new ArticleModel();
   const memberModel = new MemberModel();
   const a = await articleModel.getArticle(Number(req.params.id));
   if (a !== void 0) {
@@ -58,6 +59,7 @@ router.get('/:id', async (req: Request, res: Response<GetArticleResponse>) => {
 router.post(
   '/',
   async (req: Request<PostArticleRequestParams>, res: Response) => {
+    const articleModel = new ArticleModel();
     try {
       const a = await articleModel.createArticle(
         // @ts-ignore
@@ -78,6 +80,7 @@ router.post(
 router.put(
   '/',
   async (req: Request<PutArticleRequestParams>, res: Response) => {
+    const articleModel = new ArticleModel();
     try {
       // @ts-ignore
       const a = await articleModel.updateArticle(req.headers.auth, req.body);
@@ -95,6 +98,7 @@ router.put(
 router.delete(
   '/',
   async (req: Request<DeleteArticleRequestParams>, res: Response) => {
+    const articleModel = new ArticleModel();
     try {
       // @ts-ignore
       const a = await articleModel.deleteArticle(req.headers.auth, req.body);
