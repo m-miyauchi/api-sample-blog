@@ -5,7 +5,8 @@ import { SERVER_PORT } from './constants/server_port';
 import createDBConnection from './modules/create_db_connection';
 import Stub from './modules/stub';
 // routes
-import loginRoutes  from './routes/login';
+import loginRoutes from './routes/login';
+import logoutRoutes from './routes/logout';
 import articleRoutes from './routes/article';
 
 function main() {
@@ -16,6 +17,7 @@ function main() {
   app.use(helmet());
 
   app.use('login', loginRoutes);
+  app.use('logout', logoutRoutes);
   app.use('article', articleRoutes);
 
   // routes

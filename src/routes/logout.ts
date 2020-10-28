@@ -6,7 +6,7 @@ const router = express.Router();
 const stub = new Stub();
 
 // ログアウト
-router.put('/logout', (req: Request, res: Response) => {
+router.put('/', (req: Request, res: Response) => {
   res.status(204).end();
 });
 
