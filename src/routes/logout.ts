@@ -1,4 +1,4 @@
-import express, { Response } from 'express';
+import express, { Request, Response } from 'express';
 import MemberModel from '../modules/models/member';
 const router = express.Router();
 
