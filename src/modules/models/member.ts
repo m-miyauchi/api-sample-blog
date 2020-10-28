@@ -41,7 +41,7 @@ export default class Member {
       }
     } catch (error) {
       result.error = error;
-      console.error(error);
+      throw new Error(error);
     }
     console.log(result);
     return result;
