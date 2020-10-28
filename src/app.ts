@@ -22,14 +22,6 @@ function main() {
     res.send('API for sample blog app.');
   });
 
-  // ログイン
-  app.put('/login', (req: Request<PutLoginParams>, res: Response) => {
-    res.send(stub.putLogin());
-  });
-  // ログアウト
-  app.put('/logout', (req: Request, res: Response) => {
-    res.status(204).end();
-  });
   // 記事 一覧取得
   app.get('/articles', (req: Request, res: Response) => {
     res.send(stub.getArticles());
