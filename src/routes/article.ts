@@ -31,7 +31,7 @@ router.get('/', async (req: Request, res: Response<GetArticlesRespose>) => {
 });
 
 // 記事 詳細取得
-router.get('/:id', async (req: Request, res: Response<GetArticleRespose>) => {
+router.get('/:id', async (req: Request, res: Response<GetArticleResponse>) => {
   const r: GetArticleResponse = {};
   const memberModel = new MemberModel();
   const a = await articleModel.getArticle(Number(req.params.id));
@@ -50,6 +50,7 @@ router.get('/:id', async (req: Request, res: Response<GetArticleRespose>) => {
   }
   res.send(r);
 });
+
 // 記事 新規投稿
 router.post('/', (req: Request<PostArticleRequestParams>, res: Response) => {
   res.status(204).end();
