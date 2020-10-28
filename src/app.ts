@@ -4,8 +4,8 @@ import helmet from 'helmet';
 // modules
 import createDBConnection from './modules/create_db_connection';
 // routes
-import loginRoutes from './routes/login';
-import logoutRoutes from './routes/logout';
+import loginRoute from './routes/login';
+import logoutRoute from './routes/logout';
 import articleRoutes from './routes/article';
 // constants
 import { SERVER_PORT } from './constants/server_port';
@@ -18,8 +18,8 @@ function main() {
   app.use(helmet());
 
   // routes
-  app.use('login', loginRoutes);
-  app.use('logout', logoutRoutes);
+  app.use('login', loginRoute);
+  app.use('logout', logoutRoute);
   app.use('article', articleRoutes);
   app.get('/', (req: Request, res: Response) => {
     res.send('API for sample blog app.');
