@@ -40,6 +40,16 @@ export default class Article {
     }
   }
 
+  public async getArticle(id: number): Promise<ArticleEnity> {
+    let a: ArticleEnity | undefined;
+    try {
+      a = await this.repository.findOne(id);
+      return a;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   public async getArticles(): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
     try {
