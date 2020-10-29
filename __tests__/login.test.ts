@@ -31,7 +31,6 @@ describe('ログイン・ログアウト', () => {
         },
       }
     );
-    console.log(r);
-    expect(r.data.success).toBeTruthy();
+    expect(r.status).toBe(204);
   });
 });
