@@ -43,6 +43,7 @@ router.get('/:id', async (req: Request, res: Response<GetArticleResponse>) => {
   if (a !== void 0) {
     const m = await memberModel.findOne(a.author_member_id);
     r.article = {
+      id: a.id,
       title: a.title,
       body: a.body,
       createdAt: a.created_at.toDateString(),
@@ -80,12 +81,15 @@ router.post(
 
 // 記事 編集
 router.put(
-  '/',
+  '/:id',
   async (req: Request<PutArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
     try {
       // @ts-ignore
-      const a = await articleModel.updateArticle(req.headers.auth, req.body);
+      const a = await articleModel.updateArticle(
+        req.headers.auth,
+        Number(req.params.id)
+      );
       if (a !== void 0) {
         res.status(204).end();
         return 0;
@@ -99,12 +103,15 @@ router.put(
 
 // 記事 削除
 router.delete(
-  '/',
+  '/:id',
   async (req: Request<DeleteArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
     try {
       // @ts-ignore
-      const a = await articleModel.deleteArticle(req.headers.auth, req.body);
+      const a = await articleModel.deleteArticle(
+        req.headers.auth,
+        Number(req.params.id)
+      );
       if (a !== void 0) {
         res.status(204).end();
         return 0;

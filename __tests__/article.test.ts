@@ -5,6 +5,7 @@ import { PutLoginResponse } from '../src/types/api/put_login_response';
 import { PostArticleRequestParams } from '../src/types/api/post_article_request_params';
 import { GetArticlesRespose } from '../src/types/api/get_articles_response';
 import { GetArticleResponse } from '../src/types/api/get_article_response';
+import { PutArticleRequestParams } from '../src/types/api/put_article_request_params';
 // constants
 import { SERVER_PORT } from '../src/constants/server_port';
 
@@ -29,7 +30,7 @@ describe('記事', () => {
     const params: PostArticleRequestParams = {
       article: {
         title: `Test from Jest ${Date.toString}`,
-        body: 'body',
+        body: 'body.',
       },
     };
     const r: AxiosResponse = await axios.post(
@@ -59,9 +60,15 @@ describe('記事', () => {
   });
 
   test('編集', async (done) => {
+    const params: PutArticleRequestParams = {
+      article: {
+        title: `(Updated)Test from Jest ${Date.toString}`,
+        body: 'updated body,',
+      },
+    };
     const r: AxiosResponse = await axios.put(
-      `http://127.0.0.1:${SERVER_PORT}/article`,
-      {},
+      `http://127.0.0.1:${SERVER_PORT}/article/${articleId}`,
+      params,
       {
         headers: {
           auth: authToken,
@@ -71,8 +78,7 @@ describe('記事', () => {
   });
   test('削除', async (done) => {
     const r: AxiosResponse = await axios.delete(
-      `http://127.0.0.1:${SERVER_PORT}/article`,
-      {},
+      `http://127.0.0.1:${SERVER_PORT}/article/${articleId}`,
       {
         headers: {
           auth: authToken,
