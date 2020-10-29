@@ -22,7 +22,7 @@ describe('ログイン・ログアウト', () => {
   });
 
   test('ログアウト正常系', async () => {
-    const r: AxiosResponse<PutLogoutResponse> = await axios.post(
+    const r: AxiosResponse<PutLogoutResponse> = await axios.put(
       `http://127.0.0.1:${SERVER_PORT}/logout`,
       {},
       {
