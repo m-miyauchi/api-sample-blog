@@ -73,7 +73,7 @@ describe('記事', () => {
       },
     };
     const r: AxiosResponse = await axios.put(
-      `http://127.0.0.1:${SERVER_PORT}/article/${articleId}`,
+      `http://127.0.0.1:${SERVER_PORT}/article`,
       params,
       {
         headers: {
@@ -84,10 +84,10 @@ describe('記事', () => {
     expect(r.status).toBe(204);
     done();
   });
-  /*
+
   test('削除', async (done) => {
     const r: AxiosResponse = await axios.delete(
-      `http://127.0.0.1:${SERVER_PORT}/article/${articleId}`,
+      `http://127.0.0.1:${SERVER_PORT}/article`,
       {
         headers: {
           auth: authToken,
@@ -97,6 +97,4 @@ describe('記事', () => {
     expect(r.status).toBe(204);
     done();
   });
-
-  */
 });
