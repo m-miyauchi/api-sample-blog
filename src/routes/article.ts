@@ -22,8 +22,9 @@ router.get('/', async (req: Request, res: Response<GetArticlesRespose>) => {
 
   const tmp: ArticleSummary[] = (await articles).map((item) => {
     const a: ArticleSummary = {
-      title: item.title,
-      summary: item.body.substring(0, 49),
+      id: item.id,
+      title: item.title.substring(0, 29),
+      summary: item.body.substring(0, 199),
       updatedAt: item.updated_at.toDateString(),
     };
     return a;
