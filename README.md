@@ -21,6 +21,15 @@ $ ./scripts/drop_database.sh
 $ npm run dev
 ```
 
+### 初期ユーザ
+以下が`setup.sh`で作られる初期ユーザのログイン情報。
+```
+email: charlotte@de.witte
+password: password
+```
+任意のユーザを作成するには、開発環境実行中に、`scripts/create_member.ts`内のパラメータを変えたのち、  
+`./node_modules/.bin/ts-node ./scripts/create_member.ts`を実行。
+
 ## テスト
 ```
 # 開発環境を実行中
