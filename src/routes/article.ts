@@ -64,7 +64,6 @@ router.post(
     const articleModel = new ArticleModel();
     try {
       const a = await articleModel.createArticle(
-        // @ts-ignore
         req.headers.auth,
         req.params.article
       );
@@ -81,15 +80,11 @@ router.post(
 
 // 記事 編集
 router.put(
-  '/:id',
+  '/',
   async (req: Request<PutArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
     try {
-      // @ts-ignore
-      const a = await articleModel.updateArticle(
-        req.headers.auth,
-        Number(req.params.id)
-      );
+      const a = await articleModel.updateArticle(req.headers.auth, req.params);
       if (a !== void 0) {
         res.status(204).end();
         return 0;
@@ -103,14 +98,13 @@ router.put(
 
 // 記事 削除
 router.delete(
-  '/:id',
+  '/',
   async (req: Request<DeleteArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
     try {
-      // @ts-ignore
       const a = await articleModel.deleteArticle(
         req.headers.auth,
-        Number(req.params.id)
+        req.params.articleId
       );
       if (a !== void 0) {
         res.status(204).end();
