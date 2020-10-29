@@ -7,5 +7,5 @@ export type PutLoginResponse = {
     email: string; // メールアドレス(ログイン情報)
   };
   token: string; // アクセストークン
-  error?: string; // エラーメッセージ
+  error: string; // エラーメッセージ
 };

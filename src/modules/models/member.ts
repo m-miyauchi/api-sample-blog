@@ -27,6 +27,7 @@ export default class Member {
         email: '',
       },
       token: '',
+      error: '',
     };
     try {
       const m = await this.repository.findOne({
