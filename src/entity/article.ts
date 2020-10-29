@@ -12,6 +12,6 @@ export class Article extends BasicEntity {
   @Column()
   author_member_id: number;
 
-  @Column()
+  @Column({ default: false })
   deleted: boolean;
 }

@@ -46,6 +46,8 @@ describe('記事', () => {
     expect(r.status).toBe(204);
     done();
   });
+
+  /*
   test('一覧', async (done) => {
     const r: AxiosResponse<GetArticlesRespose> = await axios.get(
       `http://127.0.0.1:${SERVER_PORT}/article`
@@ -94,4 +96,6 @@ describe('記事', () => {
     expect(r.status).toBe(204);
     done();
   });
+
+  */
 });
