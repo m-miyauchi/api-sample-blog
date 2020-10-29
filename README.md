@@ -27,14 +27,18 @@ $ npm run dev
 email: charlotte@de.witte
 password: password
 ```
-任意のユーザを作成するには、開発環境実行中に、`scripts/create_member.ts`内のパラメータを変えたのち、  
+任意のユーザを作成するには、開発環境実行中に、`scripts/create_member.ts`内のパラメータを変えた後、  
 `./node_modules/.bin/ts-node ./scripts/create_member.ts`を実行。
 
 ## テスト
 ```
-# 開発環境を実行中
+# 開発環境を実行中に、以下を実行
 $ npm run test
 ```
 
 ## APIエンドポイント情報
-`src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身をみる。  
+`src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身を参照する。  
+だいたい、`res.send()`の内容を見れば、そのとおりだが、わかりにくい場合など、以下使用Webフレームワークのドキュメントを参照。  
+
+Express
+[https://expressjs.com/ja/](https://expressjs.com/ja/)
