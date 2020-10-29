@@ -47,7 +47,6 @@ describe('記事', () => {
     done();
   });
 
-  /*
   test('一覧', async (done) => {
     const r: AxiosResponse<GetArticlesRespose> = await axios.get(
       `http://127.0.0.1:${SERVER_PORT}/article`
@@ -62,7 +61,9 @@ describe('記事', () => {
       `http://127.0.0.1:${SERVER_PORT}/article/${articleId}`
     );
     expect(r.data.article.title.length).toBeGreaterThan(0);
+    done();
   });
+
 
   test('編集', async (done) => {
     const params: PutArticleRequestParams = {
@@ -84,6 +85,7 @@ describe('記事', () => {
     expect(r.status).toBe(204);
     done();
   });
+  /*
   test('削除', async (done) => {
     const r: AxiosResponse = await axios.delete(
       `http://127.0.0.1:${SERVER_PORT}/article/${articleId}`,
