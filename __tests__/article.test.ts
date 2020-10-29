@@ -10,7 +10,8 @@ import { PutArticleRequestParams } from '../src/types/api/put_article_request_pa
 import { SERVER_PORT } from '../src/constants/server_port';
 
 describe('記事', () => {
-  let authToken: string;
+  let authTokenA: string;
+  let authTokenB: string;
   let articleId: number; // 記事ID
 
   beforeAll(async (done) => {
@@ -19,11 +20,18 @@ describe('記事', () => {
       password: 'password',
     };
 
-    const r: AxiosResponse<PutLoginResponse> = await axios.post(
+    const r1: AxiosResponse<PutLoginResponse> = await axios.post(
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
-    authToken = r.data.token;
+    params.email = 'amelie@lens';
+    const r2: AxiosResponse<PutLoginResponse> = await axios.post(
+      `http://127.0.0.1:${SERVER_PORT}/login`,
+      params
+    );
+    // トークン2つ取得(Aが正常系使用。Bが異常系)
+    authTokenA = r1.data.token;
+    authTokenB = r2.data.token;
     done();
   });
 
@@ -39,11 +47,29 @@ describe('記事', () => {
       params,
       {
         headers: {
-          auth: authToken,
+          auth: authTokenA,
         },
       }
     );
     expect(r.status).toBe(204);
+    done();
+  });
+
+  test('作成(異常系)', async (done) => {
+    const params: PostArticleRequestParams = {
+      article: {
+        title: `Test from Jest`,
+        body: 'body.',
+      },
+    };
+    try {
+      const r: AxiosResponse = await axios.post(
+        `http://127.0.0.1:${SERVER_PORT}/article`,
+        params
+      );
+    } catch (error) {
+      expect(error.message).toBe('Request failed with status code 400');
+    }
     done();
   });
 
@@ -77,11 +103,35 @@ describe('記事', () => {
       params,
       {
         headers: {
-          auth: authToken,
+          auth: authTokenA,
         },
       }
     );
     expect(r.status).toBe(204);
+    done();
+  });
+
+  test('編集(異常系)', async (done) => {
+    const params: PutArticleRequestParams = {
+      article: {
+        id: articleId,
+        title: `(Updated)Test from Jest`,
+        body: 'updated body,',
+      },
+    };
+    try {
+      const r: AxiosResponse = await axios.put(
+        `http://127.0.0.1:${SERVER_PORT}/article`,
+        params,
+        {
+          headers: {
+            auth: authTokenB,
+          },
+        }
+      );
+    } catch (error) {
+      expect(error.message).toBe('Request failed with status code 400');
+    }
     done();
   });
 
@@ -90,11 +140,27 @@ describe('記事', () => {
       `http://127.0.0.1:${SERVER_PORT}/article`,
       {
         headers: {
-          auth: authToken,
+          auth: authTokenA,
         },
       }
     );
     expect(r.status).toBe(204);
+    done();
+  });
+
+  test('削除(異常系)', async (done) => {
+    try {
+      const r: AxiosResponse = await axios.delete(
+        `http://127.0.0.1:${SERVER_PORT}/article`,
+        {
+          headers: {
+            auth: authTokenB,
+          },
+        }
+      );
+    } catch (error) {
+      expect(error.message).toBe('Request failed with status code 400');
+    }
     done();
   });
 });

@@ -62,18 +62,14 @@ router.post(
   '/',
   async (req: Request<PostArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
-    try {
-      const a = await articleModel.createArticle(
-        // @ts-ignore
-        req.headers.auth,
-        req.body
-      );
-      if (a !== void 0) {
-        res.status(204).end();
-        return 0;
-      }
-    } catch (error) {
-      console.error(error);
+    const a = await articleModel.createArticle(
+      // @ts-ignore
+      req.headers.auth,
+      req.body
+    );
+    if (a !== void 0) {
+      res.status(204).end();
+      return 0;
     }
     res.status(400).end();
   }
@@ -84,15 +80,12 @@ router.put(
   '/',
   async (req: Request<PutArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
-    try {
-      // @ts-ignore
-      const a = await articleModel.updateArticle(req.headers.auth, req.body);
-      if (a !== void 0) {
-        res.status(204).end();
-        return 0;
-      }
-    } catch (error) {
-      console.error(error);
+    // @ts-ignore
+    const a = await articleModel.updateArticle(req.headers.auth, req.body);
+    console.log(a);
+    if (a !== void 0) {
+      res.status(204).end();
+      return 0;
     }
     res.status(400).end();
   }
@@ -103,18 +96,14 @@ router.delete(
   '/',
   async (req: Request<DeleteArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
-    try {
-      const a = await articleModel.deleteArticle(
-        // @ts-ignore
-        req.headers.auth,
-        req.body
-      );
-      if (a !== void 0) {
-        res.status(204).end();
-        return 0;
-      }
-    } catch (error) {
-      console.error(error);
+    const a = await articleModel.deleteArticle(
+      // @ts-ignore
+      req.headers.auth,
+      req.body
+    );
+    if (a !== void 0) {
+      res.status(204).end();
+      return 0;
     }
     res.status(400).end();
   }

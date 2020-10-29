@@ -35,7 +35,7 @@ export default class Article {
       }
       return a;
     } catch (error) {
-      throw new Error(error);
+      console.error(error);
     }
   }
 
@@ -45,6 +45,7 @@ export default class Article {
       a = await this.repository.findOne(id);
       return a;
     } catch (error) {
+      console.error(error);
       throw new Error(error);
     }
   }
@@ -55,6 +56,7 @@ export default class Article {
       a = await this.repository.find();
       return a;
     } catch (error) {
+      console.error(error);
       throw new Error(error);
     }
   }
@@ -69,17 +71,20 @@ export default class Article {
       const t = await authTokenModel.findEnableToken(tokenCode);
       a = await this.repository.findOne(params.article.id);
 
+      console.log(a.author_member_id, t.member_id);
       if (a !== void 0) {
         if (a.author_member_id === t.member_id) {
           a.title = params.article.title;
           a.body = params.article.body;
           a = await this.repository.save(a);
+        } else {
+          a = undefined;
         }
       }
+      return a;
     } catch (error) {
-      throw new Error(error);
+      console.error(error);
     }
-    return a;
   }
 
   public async deleteArticle(
@@ -91,14 +96,16 @@ export default class Article {
     const t = await authTokenModel.findEnableToken(tokenCode);
     try {
       a = await this.repository.findOne(articleId);
-      if (a !== undefined) {
+      if (a !== void 0) {
         if (a.author_member_id === t.member_id) {
           a.deleted = true;
           a = await this.repository.save(a);
+        } else {
+          a = undefined;
         }
       }
     } catch (error) {
-      throw new Error(error);
+      console.error(error);
     }
     return a;
   }
