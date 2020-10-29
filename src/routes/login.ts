@@ -19,7 +19,6 @@ router.post(
     } catch (error) {
       console.error(error);
     }
-    console.log('response');
     res.send(r);
   }
 );
