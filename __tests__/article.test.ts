@@ -129,4 +129,20 @@ describe('記事', () => {
     expect(r.status).toBe(204);
     done();
   });
+
+  test('削除(異常系)', async (done) => {
+    try {
+      const r: AxiosResponse = await axios.delete(
+        `http://127.0.0.1:${SERVER_PORT}/article`,
+        {
+          headers: {
+            auth: authTokenB,
+          },
+        }
+      );
+    } catch (error) {
+      expect(error.message).toBe('Request failed with status code 400');
+    }
+    done();
+  });
 });
