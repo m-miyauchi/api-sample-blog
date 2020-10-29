@@ -6,6 +6,7 @@ import { PutLogoutResponse } from '../src/types/api/put_logout_response';
 import { SERVER_PORT } from '../src/constants/server_port';
 
 describe('ログイン・ログアウト', () => {
+  let authToken: string;
   test('login', async () => {
     const params: PutLoginParams = {
       email: 'charlotte@de.witte',
@@ -16,7 +17,7 @@ describe('ログイン・ログアウト', () => {
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
-    console.log(r);
+    authToken = r.data.token;
     expect(r.data.isSuccessLogin).toBeTruthy();
   });
 
@@ -26,7 +27,7 @@ describe('ログイン・ログアウト', () => {
       {},
       {
         headers: {
-          auth: '',
+          auth: authToken,
         },
       }
     );
