@@ -24,6 +24,7 @@ describe('記事', () => {
       params
     );
     authToken = r.data.token;
+    done();
   });
 
   test('作成', async (done) => {
@@ -43,13 +44,15 @@ describe('記事', () => {
       }
     );
     expect(r.status).toBe(204);
+    done();
   });
   test('一覧', async (done) => {
     const r: AxiosResponse<GetArticlesRespose> = await axios.get(
       `http://127.0.0.1:${SERVER_PORT}/article`
     );
-    expect(r.data.articles[0].title.length).toBeGreaterThan(0);
     articleId = r.data.articles[0].id;
+    expect(r.data.articles[0].title.length).toBeGreaterThan(0);
+    done();
   });
 
   test('詳細', async (done) => {
@@ -77,6 +80,7 @@ describe('記事', () => {
       }
     );
     expect(r.status).toBe(204);
+    done();
   });
   test('削除', async (done) => {
     const r: AxiosResponse = await axios.delete(
@@ -88,5 +92,6 @@ describe('記事', () => {
       }
     );
     expect(r.status).toBe(204);
+    done();
   });
 });
