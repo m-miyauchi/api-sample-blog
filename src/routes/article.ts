@@ -22,8 +22,9 @@ router.get('/', async (req: Request, res: Response<GetArticlesRespose>) => {
 
   const tmp: ArticleSummary[] = (await articles).map((item) => {
     const a: ArticleSummary = {
-      title: item.title,
-      summary: item.body.substring(0, 49),
+      id: item.id,
+      title: item.title.substring(0, 29),
+      summary: item.body.substring(0, 199),
       updatedAt: item.updated_at.toDateString(),
     };
     return a;
@@ -42,6 +43,7 @@ router.get('/:id', async (req: Request, res: Response<GetArticleResponse>) => {
   if (a !== void 0) {
     const m = await memberModel.findOne(a.author_member_id);
     r.article = {
+      id: a.id,
       title: a.title,
       body: a.body,
       createdAt: a.created_at.toDateString(),
@@ -64,10 +66,11 @@ router.post(
       const a = await articleModel.createArticle(
         // @ts-ignore
         req.headers.auth,
-        req.params.article
+        req.body
       );
       if (a !== void 0) {
         res.status(204).end();
+        return 0;
       }
     } catch (error) {
       console.error(error);
@@ -86,6 +89,7 @@ router.put(
       const a = await articleModel.updateArticle(req.headers.auth, req.body);
       if (a !== void 0) {
         res.status(204).end();
+        return 0;
       }
     } catch (error) {
       console.error(error);
@@ -100,10 +104,14 @@ router.delete(
   async (req: Request<DeleteArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
     try {
-      // @ts-ignore
-      const a = await articleModel.deleteArticle(req.headers.auth, req.body);
+      const a = await articleModel.deleteArticle(
+        // @ts-ignore
+        req.headers.auth,
+        req.body
+      );
       if (a !== void 0) {
         res.status(204).end();
+        return 0;
       }
     } catch (error) {
       console.error(error);

@@ -12,6 +12,7 @@ router.put('/', async (req: Request, res: Response) => {
     const t = await memberModel.logout(req.headers.auth);
     if (t !== void 0) {
       res.status(204).end();
+      return 0;
     }
   } catch (error) {
     console.error(error);

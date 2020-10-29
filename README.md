@@ -8,10 +8,21 @@
 ## セットアップ
 ```
 $ npm i
-$ ./scripts/create_database.sh
+$ ./scripts/setup.sh
+```
+
+## DB初期化
+```
+$ ./scripts/drop_database.sh
 ```
 
 ## 実行
 ```
 $ npm run dev
+```
+
+## テスト
+```
+# 開発環境を実行中
+$ npm run test
 ```

@@ -22,6 +22,12 @@ export default class Member {
   public async login(params: PutLoginParams): Promise<PutLoginResponse> {
     const result: PutLoginResponse = {
       isSuccessLogin: false,
+      member: {
+        name: '',
+        email: '',
+      },
+      token: '',
+      error: '',
     };
     try {
       const m = await this.repository.findOne({
@@ -30,7 +36,8 @@ export default class Member {
           password: params.password,
         },
       });
-      if (m !== undefined) {
+
+      if (m !== void 0) {
         const authTokenModel = new AuthTokenModel();
         const tokenEntity = await authTokenModel.createToken(m.id);
         result.isSuccessLogin = true;
@@ -40,6 +47,7 @@ export default class Member {
       }
     } catch (error) {
       result.error = error;
+      throw new Error(error);
     }
     return result;
   }

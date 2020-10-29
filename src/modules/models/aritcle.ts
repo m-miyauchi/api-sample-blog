@@ -26,7 +26,7 @@ export default class Article {
     try {
       const authTokenModel = new AuthTokenModel();
       const t = await authTokenModel.findEnableToken(tokenCode);
-      if (t !== undefined) {
+      if (t !== void 0) {
         a = await this.repository.save({
           title: params.article.title,
           body: params.article.body,
@@ -69,7 +69,7 @@ export default class Article {
       const t = await authTokenModel.findEnableToken(tokenCode);
       a = await this.repository.findOne(params.article.id);
 
-      if (a !== undefined) {
+      if (a !== void 0) {
         if (a.author_member_id === t.member_id) {
           a.title = params.article.title;
           a.body = params.article.body;

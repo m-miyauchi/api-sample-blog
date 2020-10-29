@@ -1,6 +1,7 @@
 import express, { Request, Response, Express } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
+import bodyParser from 'body-parser';
 // modules
 import createDBConnection from './modules/create_db_connection';
 // routes
@@ -15,11 +16,23 @@ async function main() {
   const app: Express = express();
   app.use(morgan('dev'));
   app.use(helmet());
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  if (app.get('env') === 'development') {
+    app.use(function (req, res, next) {
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header(
+        'Access-Control-Allow-Headers',
+        'Origin, X-Requested-With, Content-Type, Accept'
+      );
+      next();
+    });
+  }
 
   // routes
-  app.use('login', loginRoute);
-  app.use('logout', logoutRoute);
-  app.use('article', articleRoutes);
+  app.use('/login', loginRoute);
+  app.use('/logout', logoutRoute);
+  app.use('/article', articleRoutes);
   app.get('/', (req: Request, res: Response) => {
     res.send('API for sample blog app.');
   });
