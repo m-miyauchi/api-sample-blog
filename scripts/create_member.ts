@@ -9,5 +9,9 @@ async function main() {
     console.log('Member created!');
     console.log(m);
   });
+  member.register('Amelie', 'amelie@lens', 'password').then((m) => {
+    console.log('Member created!');
+    console.log(m);
+  });
 }
 main();
