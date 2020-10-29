@@ -35,3 +35,6 @@ password: password
 # 開発環境を実行中
 $ npm run test
 ```
+
+## APIエンドポイント情報
+`src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身をみる。  
