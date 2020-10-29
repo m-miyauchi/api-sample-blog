@@ -93,6 +93,27 @@ describe('記事', () => {
     done();
   });
 
+  test('編集(異常系)', async (done) => {
+    const params: PutArticleRequestParams = {
+      article: {
+        id: articleId,
+        title: `(Updated)Test from Jest`,
+        body: 'updated body,',
+      },
+    };
+    const r: AxiosResponse = await axios.put(
+      `http://127.0.0.1:${SERVER_PORT}/article`,
+      params,
+      {
+        headers: {
+          auth: authTokenB,
+        },
+      }
+    );
+    expect(r.status).toBe(400);
+    done();
+  });
+
   test('削除', async (done) => {
     const r: AxiosResponse = await axios.delete(
       `http://127.0.0.1:${SERVER_PORT}/article`,
