@@ -30,7 +30,7 @@ describe('記事', () => {
   test('作成', async (done) => {
     const params: PostArticleRequestParams = {
       article: {
-        title: `Test from Jest ${Date.toString}`,
+        title: `Test from Jest ${Date.toString()}`,
         body: 'body.',
       },
     };
@@ -68,7 +68,7 @@ describe('記事', () => {
     const params: PutArticleRequestParams = {
       article: {
         id: articleId,
-        title: `(Updated)Test from Jest ${Date.toString}`,
+        title: `(Updated)Test from Jest ${Date.toString()}`,
         body: 'updated body,',
       },
     };
