@@ -22,6 +22,11 @@ export default class Member {
   public async login(params: PutLoginParams): Promise<PutLoginResponse> {
     const result: PutLoginResponse = {
       isSuccessLogin: false,
+      member: {
+        name: '',
+        email: '',
+      },
+      token: '',
     };
     try {
       const m = await this.repository.findOne({
@@ -43,7 +48,6 @@ export default class Member {
       result.error = error;
       throw new Error(error);
     }
-    console.log(result);
     return result;
   }
 
