@@ -55,6 +55,24 @@ describe('記事', () => {
     done();
   });
 
+  test('作成(異常系)', async (done) => {
+    const params: PostArticleRequestParams = {
+      article: {
+        title: `Test from Jest`,
+        body: 'body.',
+      },
+    };
+    try {
+      const r: AxiosResponse = await axios.post(
+        `http://127.0.0.1:${SERVER_PORT}/article`,
+        params
+      );
+    } catch (error) {
+      expect(error.message).toBe('Request failed with status code 400');
+    }
+    done();
+  });
+
   test('一覧', async (done) => {
     const r: AxiosResponse<GetArticlesRespose> = await axios.get(
       `http://127.0.0.1:${SERVER_PORT}/article`

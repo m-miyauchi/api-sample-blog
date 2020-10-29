@@ -62,18 +62,14 @@ router.post(
   '/',
   async (req: Request<PostArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
-    try {
-      const a = await articleModel.createArticle(
-        // @ts-ignore
-        req.headers.auth,
-        req.body
-      );
-      if (a !== void 0) {
-        res.status(204).end();
-        return 0;
-      }
-    } catch (error) {
-      console.error(error);
+    const a = await articleModel.createArticle(
+      // @ts-ignore
+      req.headers.auth,
+      req.body
+    );
+    if (a !== void 0) {
+      res.status(204).end();
+      return 0;
     }
     res.status(400).end();
   }

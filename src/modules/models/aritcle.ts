@@ -36,7 +36,6 @@ export default class Article {
       return a;
     } catch (error) {
       console.error(error);
-      throw new Error(error);
     }
   }
 
