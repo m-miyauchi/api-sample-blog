@@ -101,16 +101,19 @@ describe('記事', () => {
         body: 'updated body,',
       },
     };
-    const r: AxiosResponse = await axios.put(
-      `http://127.0.0.1:${SERVER_PORT}/article`,
-      params,
-      {
-        headers: {
-          auth: authTokenB,
-        },
-      }
-    );
-    expect(r.status).toBe(400);
+    try {
+      const r: AxiosResponse = await axios.put(
+        `http://127.0.0.1:${SERVER_PORT}/article`,
+        params,
+        {
+          headers: {
+            auth: authTokenB,
+          },
+        }
+      );
+    } catch (error) {
+      expect(error.message).toBe('Request failed with status code 400');
+    }
     done();
   });
 
