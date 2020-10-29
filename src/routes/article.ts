@@ -84,16 +84,12 @@ router.put(
   '/',
   async (req: Request<PutArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
-    try {
-      // @ts-ignore
-      const a = await articleModel.updateArticle(req.headers.auth, req.body);
-      console.log(a);
-      if (a !== void 0) {
-        res.status(204).end();
-        return 0;
-      }
-    } catch (error) {
-      console.error(error);
+    // @ts-ignore
+    const a = await articleModel.updateArticle(req.headers.auth, req.body);
+    console.log(a);
+    if (a !== void 0) {
+      res.status(204).end();
+      return 0;
     }
     res.status(400).end();
   }
