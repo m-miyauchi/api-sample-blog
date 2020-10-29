@@ -75,6 +75,7 @@ describe('記事', () => {
         },
       }
     );
+    expect(r.status).toBe(204);
   });
   test('削除', async (done) => {
     const r: AxiosResponse = await axios.delete(
@@ -85,5 +86,6 @@ describe('記事', () => {
         },
       }
     );
+    expect(r.status).toBe(204);
   });
 });
