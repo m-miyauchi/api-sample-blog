@@ -7,7 +7,7 @@ import { SERVER_PORT } from '../src/constants/server_port';
 
 describe('ログイン・ログアウト', () => {
   let authToken: string;
-  test('login', async () => {
+  test('ログイン正常系', async () => {
     const params: PutLoginParams = {
       email: 'charlotte@de.witte',
       password: 'password',
@@ -21,7 +21,7 @@ describe('ログイン・ログアウト', () => {
     expect(r.data.isSuccessLogin).toBeTruthy();
   });
 
-  test('logout', async () => {
+  test('ログアウト正常系', async () => {
     const r: AxiosResponse<PutLogoutResponse> = await axios.post(
       `http://127.0.0.1:${SERVER_PORT}/logout`,
       {},
