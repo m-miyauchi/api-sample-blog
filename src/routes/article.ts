@@ -64,6 +64,7 @@ router.post(
     const articleModel = new ArticleModel();
     try {
       const a = await articleModel.createArticle(
+        // @ts-ignore
         req.headers.auth,
         req.params.article
       );
@@ -84,6 +85,7 @@ router.put(
   async (req: Request<PutArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
     try {
+      // @ts-ignore
       const a = await articleModel.updateArticle(req.headers.auth, req.params);
       if (a !== void 0) {
         res.status(204).end();
@@ -103,6 +105,7 @@ router.delete(
     const articleModel = new ArticleModel();
     try {
       const a = await articleModel.deleteArticle(
+        // @ts-ignore
         req.headers.auth,
         req.params.articleId
       );
