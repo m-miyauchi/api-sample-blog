@@ -87,6 +87,7 @@ router.put(
     try {
       // @ts-ignore
       const a = await articleModel.updateArticle(req.headers.auth, req.body);
+      console.log(a);
       if (a !== void 0) {
         res.status(204).end();
         return 0;
