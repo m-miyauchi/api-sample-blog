@@ -64,7 +64,6 @@ describe('記事', () => {
     done();
   });
 
-
   test('編集', async (done) => {
     const params: PutArticleRequestParams = {
       article: {
