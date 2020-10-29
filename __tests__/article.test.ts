@@ -62,6 +62,7 @@ describe('記事', () => {
   test('編集', async (done) => {
     const params: PutArticleRequestParams = {
       article: {
+        id: articleId,
         title: `(Updated)Test from Jest ${Date.toString}`,
         body: 'updated body,',
       },
