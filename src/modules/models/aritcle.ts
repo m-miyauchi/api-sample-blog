@@ -71,7 +71,6 @@ export default class Article {
       const t = await authTokenModel.findEnableToken(tokenCode);
       a = await this.repository.findOne(params.article.id);
 
-      console.log(a.author_member_id, t.member_id);
       if (a !== void 0) {
         if (a.author_member_id === t.member_id) {
           a.title = params.article.title;
