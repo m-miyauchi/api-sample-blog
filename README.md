@@ -3,7 +3,7 @@
 
 ## 環境
 ※Mac環境でDocker内でアプリケーションを動かすと、実行速度(特にWebpackによるビルド)が極端に遅いため、  
-データストアのみDockerを使用
+データストアのみDockerを使用する
 - Node.js v15
 - Docker(& Docker compose)
 
