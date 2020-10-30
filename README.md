@@ -2,7 +2,8 @@
 新人教育のためのブログを想定した簡易API。
 
 ## 環境
-※Mac環境でDocker内でアプリケーションを動かすと実行速度が極端に遅いので、データストアのみDockerを使用
+※Mac環境でDocker内でアプリケーションを動かすとび実行速度(特にWebpackによるビルド)が極端に遅いため、  
+データストアのみDockerを使用
 - Node.js v15
 - Docker(& Docker compose)
 
