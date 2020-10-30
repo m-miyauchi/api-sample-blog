@@ -1,4 +1,4 @@
-# API for new commer training
+# API for new commer training(Blog API)
 新人教育のためのブログを想定した簡易API。
 
 ## 環境
