@@ -54,6 +54,7 @@ $ npm run build
 ## APIエンドポイント情報
 `src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身を参照する。  
 大まかに、`res.send()`の内容を見れば、その通りだが、分かりにくい場合など、以下使用Webフレームワークのドキュメントを参照する。  
+注意点として、認証トークンはHTTPヘッダに`auth`というパラメータを設け、そこに指定すること(※プロトコル使用の`Authorization`ではない点似注意)。  
 
 Express  
 [https://expressjs.com/ja/](https://expressjs.com/ja/)
