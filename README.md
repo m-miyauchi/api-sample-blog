@@ -1,13 +1,21 @@
 # API for new commer training
+新人教育のためのブログを想定した簡易API。
 
 ## 環境
 ※Mac環境でDocker内でアプリケーションを動かすと実行速度が極端に遅いので、データストアのみDockerを使用
 - Node.js v15
 - Docker(& Docker compose)
 
+## 主な技術構成
+- Node.js(TypeScript)
+- Express
+- TypeOrm
+- PostgreSQL11(Docker)
+
 ## セットアップ
 ```
 $ npm i
+# 失敗することがあるので、その場合再度以下を実行すると正常に終了する
 $ ./scripts/setup.sh
 ```
 
@@ -27,8 +35,8 @@ $ npm run dev
 email: charlotte@de.witte
 password: password
 ```
-任意のユーザを作成するには、開発環境実行中に、`scripts/create_member.ts`内のパラメータを変えた後、  
-`./node_modules/.bin/ts-node ./scripts/create_member.ts`を実行。
+任意のユーザを作成するには、`scripts/create_member.ts`内のパラメータを変えた後、  
+開発環境実行中に`./node_modules/.bin/ts-node ./scripts/create_member.ts`を実行。
 
 ## テスト
 ```
