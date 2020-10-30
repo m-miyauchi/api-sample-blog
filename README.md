@@ -8,9 +8,9 @@
 
 ## 主な技術構成
 - Node.js(TypeScript)
-- Express
-- TypeOrm
-- PostgreSQL11(Docker)
+- [Express](https://expressjs.com/ja/)
+- [TypeOrm](https://typeorm.io/#/)
+- PostgreSQL 11(Docker)
 
 ## セットアップ
 ```
@@ -46,7 +46,7 @@ $ npm run test
 
 ## APIエンドポイント情報
 `src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身を参照する。  
-だいたい、`res.send()`の内容を見れば、そのとおりだが、わかりにくい場合など、以下使用Webフレームワークのドキュメントを参照。  
+大まかに、`res.send()`の内容を見れば、その通りだが、分かりにくい場合など、以下使用Webフレームワークのドキュメントを参照する。  
 
-Express
+Express  
 [https://expressjs.com/ja/](https://expressjs.com/ja/)
