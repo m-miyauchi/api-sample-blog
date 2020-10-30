@@ -45,6 +45,12 @@ password: password
 $ npm run test
 ```
 
+## プロダクションビルド
+ホスティングする場合に使用。DBコネクションの設定は、`src/modules/create_db_connection.ts`を参照する。  
+```
+$ npm run build
+```
+
 ## APIエンドポイント情報
 `src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身を参照する。  
 大まかに、`res.send()`の内容を見れば、その通りだが、分かりにくい場合など、以下使用Webフレームワークのドキュメントを参照する。  
