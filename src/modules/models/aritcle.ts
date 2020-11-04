@@ -42,7 +42,12 @@ export default class Article {
   public async getArticle(id: number): Promise<ArticleEnity> {
     let a: ArticleEnity | undefined;
     try {
-      a = await this.repository.findOne(id);
+      a = await this.repository.findOne({
+        where: {
+          id,
+          deleted: false,
+        },
+      });
       return a;
     } catch (error) {
       console.error(error);
@@ -53,7 +58,11 @@ export default class Article {
   public async getArticles(): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
     try {
-      a = await this.repository.find();
+      a = await this.repository.find({
+        where: {
+          deleted: false,
+        },
+      });
       return a;
     } catch (error) {
       console.error(error);
