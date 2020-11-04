@@ -92,13 +92,16 @@ router.put(
 
 // 記事 削除
 router.delete(
-  '/',
+  '/:id',
   async (req: Request<DeleteArticleRequestParams>, res: Response) => {
     const articleModel = new ArticleModel();
+
+    console.log(req.body);
     const a = await articleModel.deleteArticle(
       // @ts-ignore
       req.headers.auth,
-      req.body
+      // @ts-ignore
+      Number(req.params.id)
     );
     if (a !== void 0) {
       res.status(204).end();
