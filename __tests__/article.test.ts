@@ -136,7 +136,12 @@ describe('記事', () => {
   });
 
   test('削除', async (done) => {
-    const r: AxiosResponse = await axios.delete(
+
+    const r1: AxiosResponse<GetArticlesRespose> = await axios.get(
+      `http://127.0.0.1:${SERVER_PORT}/article`
+    );
+
+    const r2: AxiosResponse = await axios.delete(
       `http://127.0.0.1:${SERVER_PORT}/article`,
       {
         headers: {
@@ -144,7 +149,16 @@ describe('記事', () => {
         },
       }
     );
-    expect(r.status).toBe(204);
+
+    const r3: AxiosResponse<GetArticlesRespose> = await axios.get(
+      `http://127.0.0.1:${SERVER_PORT}/article`
+    );
+
+    const articlesBefore = r1.data.articles.length;
+    const articlesAfter = r3.data.articles.length;
+
+    expect(r2.status).toBe(204);
+    expect(articlesBefore - articlesAfter).toBe(1);
     done();
   });
 
