@@ -7,7 +7,6 @@ import { PostArticleRequestParams } from '../types/api/post_article_request_para
 import { PutArticleRequestParams } from '../types/api/put_article_request_params';
 import { GetArticlesRespose } from '../types/api/get_articles_response';
 import { GetArticleResponse } from '../types/api/get_article_response';
-import { DeleteArticleRequestParams } from '../types/api/delte_article_request_params';
 import { ArticleSummary } from '../types/article_summary';
 
 const router = express.Router();
@@ -91,21 +90,21 @@ router.put(
 );
 
 // 記事 削除
-router.delete(
-  '/',
-  async (req: Request<DeleteArticleRequestParams>, res: Response) => {
-    const articleModel = new ArticleModel();
-    const a = await articleModel.deleteArticle(
-      // @ts-ignore
-      req.headers.auth,
-      req.body
-    );
-    if (a !== void 0) {
-      res.status(204).end();
-      return 0;
-    }
-    res.status(400).end();
+router.delete('/:id', async (req: Request, res: Response) => {
+  const articleModel = new ArticleModel();
+
+  console.log(req.body);
+  const a = await articleModel.deleteArticle(
+    // @ts-ignore
+    req.headers.auth,
+    // @ts-ignore
+    Number(req.params.id)
+  );
+  if (a !== void 0) {
+    res.status(204).end();
+    return 0;
   }
-);
+  res.status(400).end();
+});
 
 export default router;

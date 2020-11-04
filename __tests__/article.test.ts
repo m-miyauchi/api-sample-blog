@@ -111,7 +111,7 @@ describe('記事', () => {
     done();
   });
 
-  test('編集(異常系)', async (done) => {
+  test('編集(異常系、権限エラー)', async (done) => {
     const params: PutArticleRequestParams = {
       article: {
         id: articleId,
@@ -136,22 +136,53 @@ describe('記事', () => {
   });
 
   test('削除', async (done) => {
-    const r: AxiosResponse = await axios.delete(
-      `http://127.0.0.1:${SERVER_PORT}/article`,
+    // 削除前の記事総数
+    const r1: AxiosResponse<GetArticlesRespose> = await axios.get(
+      `http://127.0.0.1:${SERVER_PORT}/article`
+    );
+
+    const r2: AxiosResponse = await axios.delete(
+      `http://127.0.0.1:${SERVER_PORT}/article/${r1.data.articles[0].id}`,
       {
         headers: {
           auth: authTokenA,
         },
       }
     );
-    expect(r.status).toBe(204);
+
+    // 削除後の記事総数
+    const r3: AxiosResponse<GetArticlesRespose> = await axios.get(
+      `http://127.0.0.1:${SERVER_PORT}/article`
+    );
+
+    const articlesBefore = r1.data.articles.length;
+    const articlesAfter = r3.data.articles.length;
+
+    expect(r2.status).toBe(204);
+    expect(articlesBefore - articlesAfter).toBe(1);
     done();
   });
 
-  test('削除(異常系)', async (done) => {
+  test('削除(異常系、権限エラー)', async (done) => {
     try {
-      const r: AxiosResponse = await axios.delete(
-        `http://127.0.0.1:${SERVER_PORT}/article`,
+      const params: PostArticleRequestParams = {
+        article: {
+          title: `Test from Jest...削除(異常系)`,
+          body: 'body.',
+        },
+      };
+      await axios.post(`http://127.0.0.1:${SERVER_PORT}/article`, params, {
+        headers: {
+          auth: authTokenA,
+        },
+      });
+
+      const r: AxiosResponse<GetArticlesRespose> = await axios.get(
+        `http://127.0.0.1:${SERVER_PORT}/article`
+      );
+
+      await axios.delete(
+        `http://127.0.0.1:${SERVER_PORT}/article/${r.data.articles[0].id}`,
         {
           headers: {
             auth: authTokenB,
