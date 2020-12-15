@@ -5,3 +5,48 @@ info:
 servers:
   - url: http://127.0.0.1:3000
     description: ローカル開発環境
+paths:
+  /login:
+    put:
+      summary: ログイン
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+          '200':
+            description: OK
+  /logout:
+    put:
+      summary: ログアウト
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+          '200':
+            description: OK
+  /article:
+    get:
+      summary: 記事一覧取得
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+          '200':
+            description: OK
+  /article/{id}:
+    get:
+      summary: 記事詳細取得
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+          '200':
+            description: OK
