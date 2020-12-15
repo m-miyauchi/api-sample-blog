@@ -91,8 +91,27 @@ components:
    schemas:
     PutLoginParams:
       type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
     PutLoginResponse:
       type: object
+      properties:
+        isSuccessLogin:
+          type: string
+        member:
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+        token:
+          type: string
+        error:
+          type: string
     GetArticlesResponse:
       type: object
     GetArticleResponse:
