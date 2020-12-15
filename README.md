@@ -41,6 +41,13 @@ password: password
 任意のユーザを作成するには、`scripts/create_member.ts`内のパラメータを変えた後、  
 開発環境実行中に`./node_modules/.bin/ts-node ./scripts/create_member.ts`を実行。
 
+## APIドキュメント
+以下を実行することにより、`swagger.yml`をHTMLファイルとして出力可能
+```
+# redoc-static.htmlを生成
+$ yarn build:doc
+```
+
 ## テスト
 ```
 # 開発環境を実行中に、以下を実行
