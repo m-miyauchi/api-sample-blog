@@ -43,10 +43,12 @@ password: password
 
 ## APIドキュメント
 以下を実行することにより、`swagger.yml`をHTMLファイルとして出力可能
+
 ```
 # redoc-static.htmlを生成
 $ yarn build:doc
 ```
+フロントエンド環境でもAPI返却値として使用可能なTypeScript型定義ファイルは、`src/types`配下を適宜参照する。
 
 ## テスト
 ```
@@ -64,7 +66,11 @@ $ yarn build
 `src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身を参照する。  
 大まかに、`res.send()`の内容を見れば、その通りだが、分かりにくい場合など、以下使用Webフレームワークのドキュメントを参照する。  
 注意点として、ログインAPIにて取得可能な、認証トークンは、  
-HTTPヘッダに`auth`というパラメータを設け、そこに指定すること(※プロトコル使用の`Authorization`ではない点に注意)。  
+HTTPヘッダに`auth`というパラメータを設け、そこに指定すること(※HTTPプロトコル使用の`Authorization`ではない点に注意)。  
+
+
+## その他ドキュメント
+実装を知りたい場合、以下使用Webアプリケーションフレームワークのドキュメントを参照する。
 
 Express  
 [https://expressjs.com/ja/](https://expressjs.com/ja/)

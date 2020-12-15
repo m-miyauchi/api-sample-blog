@@ -2,6 +2,7 @@ openapi: 3.0.0
 info:
   title: API Sample Blog
   version: 0.0.1
+  description: 記事一覧、詳細、ログインのエンドポイントを除き、HTTPヘッダに所定のトークンを設定する必要がある。README.mdを参照する
 servers:
   - url: http://127.0.0.1:3000
     description: ローカル開発環境
