@@ -5,6 +5,7 @@
   "main": "src/app.ts",
   "scripts": {
     "build": "webpack",
+    "build:doc": "redoc-cli bundle ./swagger.yml",
     "dev": "docker-compose up -d && sleep 4 && nodemon",
     "lint": "eslint --fix src",
     "start": "node dist/bundle.js",
@@ -55,7 +56,7 @@
     "jest": "^26.6.3",
     "nodemon": "^2.0.6",
     "prettier": "^2.2.1",
-    "redoc": "^2.0.0-rc.45",
+    "redoc-cli": "^0.10.2",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.12",
     "ts-node": "^9.1.1",
