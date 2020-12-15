@@ -13,10 +13,14 @@ paths:
         content:
           application/json:
             schema:
-              type: object
+              $ref: '#/components/schemas/PutLoginParams'
       responses:
-          '200':
-            description: OK
+        '200':
+          description: 成功時のレスポンス.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutLoginResponse'
   /logout:
     put:
       summary: ログアウト
@@ -50,3 +54,17 @@ paths:
       responses:
           '200':
             description: OK
+components:
+   schemas:
+    PutLoginParams:
+      type: object
+    PutLoginResponse:
+      type: object
+    GetArticlesRespose:
+      type: object
+    GetArticleResponse:
+      type: object
+    PostArticleRequestParams:
+      type: object
+    PutArticleRequestParams:
+      type: object
