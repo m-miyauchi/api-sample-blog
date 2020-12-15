@@ -113,10 +113,57 @@ components:
         error:
           type: string
     GetArticlesResponse:
-      type: object
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+          title:
+            type: string
+          summary:
+            type: string
+          updatedAt:
+            type: string
     GetArticleResponse:
       type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+        body:
+          type: string
+        author:
+          type: object
+          properties:
+            memberId:
+              type: number
+            name:
+              type: string
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
     PostArticleRequestParams:
       type: object
+      properties:
+        article:
+          type: object
+          properties:
+            title:
+              type: string
+            body:
+              type: string
     PutArticleRequestParams:
       type: object
+      properties:
+        article:
+          type: object
+          properties:
+            id:
+              type: number
+            title:
+              type: string
+            body:
+              type: string
