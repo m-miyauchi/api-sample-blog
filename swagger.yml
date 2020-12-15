@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  title: API Sample Blog
+  version: 0.0.1
+  description: 記事一覧、詳細、ログインのエンドポイントを除き、HTTPヘッダに所定のトークンを設定する必要がある。README.mdを参照する
+servers:
+  - url: http://127.0.0.1:3000
+    description: ローカル開発環境
+paths:
+  /login:
+    put:
+      summary: ログイン
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutLoginParams'
+      responses:
+        '200':
+          description: 成功時のレスポンス.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PutLoginResponse'
+  /logout:
+    put:
+      summary: ログアウト
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+          '200':
+            description: OK
+  /article:
+    get:
+      summary: 記事一覧取得
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 成功時のレスポンス.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetArticlesResponse'
+    post:
+      summary: 新規投稿
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostArticleRequestParams'
+      responses:
+        '200':
+          description: 成功時のレスポンス.
+  /article/{id}:
+    get:
+      summary: 記事詳細取得
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: 成功時のレスポンス.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetArticleResponse'
+    put:
+      summary: 投稿内容の更新
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutArticleRequestParams'
+      responses:
+        '200':
+          description: 成功時のレスポンス.
+    delete:
+      summary: 投稿の削除
+      responses:
+        '200':
+          description: 成功時のレスポンス.
+components:
+   schemas:
+    PutLoginParams:
+      type: object
+      properties:
+        email:
+          type: string
+          example: charlotte@de.witte
+        password:
+          type: string
+          example: password
+    PutLoginResponse:
+      type: object
+      properties:
+        isSuccessLogin:
+          type: string
+          example: true
+          description: ここがfalseだとログインに失敗
+        member:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Charlotte
+            email:
+              type: string
+              example: charlotte@de.witte
+        token:
+          type: string
+          example: tokenABC
+        error:
+          type: string
+          example: Login failed.
+          description: エラー時のみメッセージが入る
+    GetArticlesResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: number
+            example: 12
+          title:
+            type: string
+            example: サンプルの投稿
+          summary:
+            type: string
+            example: サンプルの投稿本文。これはサンプルです
+          updatedAt:
+            type: string
+    GetArticleResponse:
+      type: object
+      properties:
+        id:
+          type: number
+          example: 9
+        title:
+          type: string
+          example: サンプルの投稿
+        body:
+          type: string
+          example: サンプルの投稿本文。これはサンプルです
+        author:
+          type: object
+          properties:
+            memberId:
+              type: number
+              example: 3
+            name:
+              type: string
+              example: Charlotte
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+    PostArticleRequestParams:
+      type: object
+      properties:
+        article:
+          type: object
+          properties:
+            title:
+              type: string
+              example: 新規投稿のタイトル
+            body:
+              type: string
+              example: 新規投稿の本文
+    PutArticleRequestParams:
+      type: object
+      properties:
+        article:
+          type: object
+          properties:
+            id:
+              type: number
+              example: 5
+            title:
+              type: string
+              example: 投稿更新のタイトル
+            body:
+              type: string
+              example: 投稿更新の本文

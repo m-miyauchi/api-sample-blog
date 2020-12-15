@@ -15,7 +15,9 @@
 
 ## セットアップ
 ```
-$ npm i
+$ npm i -g yarn
+# 使用中シェル設定を再読み込み、またはシェルのセッションを新しく開いた後
+$ yarn install
 # 失敗することがあるので、その場合再度以下を実行すると正常に終了する
 $ ./scripts/setup.sh
 ```
@@ -27,7 +29,7 @@ $ ./scripts/drop_database.sh
 
 ## 実行
 ```
-$ npm run dev
+$ yarn dev
 ```
 
 ### 初期ユーザ
@@ -39,23 +41,33 @@ password: password
 任意のユーザを作成するには、`scripts/create_member.ts`内のパラメータを変えた後、  
 開発環境実行中に`./node_modules/.bin/ts-node ./scripts/create_member.ts`を実行。
 
+## APIドキュメント
+以下を実行することにより、`swagger.yml`をHTMLファイルとして出力可能
+
+```
+# redoc-static.htmlを生成
+$ yarn build:doc
+```
+フロントエンド環境でもAPI返却値として使用可能なTypeScript型定義ファイルは、`src/types`配下を適宜参照する。
+
+## APIエンドポイントの認証について
+記事一覧、詳細、ログインを除き、HTTPヘッダに所定のトークンを設定する必要がある。    
+ログインAPI成功時に取得可能な認証トークンを、HTTPヘッダに`auth`というパラメータを設け指定すること(※HTTPプロトコル使用の`Authorization`と異なる点に注意)。  
+
 ## テスト
 ```
 # 開発環境を実行中に、以下を実行
-$ npm run test
+$ yarn test
 ```
 
 ## プロダクションビルド
 ホスティングする場合に使用。DBコネクションの設定は、`src/modules/create_db_connection.ts`を参照する。  
 ```
-$ npm run build
+$ yarn build
 ```
 
-## APIエンドポイント情報
-`src/app.ts`の`// routes`コメント以降でロードされているモジュールの中身を参照する。  
-大まかに、`res.send()`の内容を見れば、その通りだが、分かりにくい場合など、以下使用Webフレームワークのドキュメントを参照する。  
-注意点として、ログインAPIにて取得可能な、認証トークンは、  
-HTTPヘッダに`auth`というパラメータを設け、そこに指定すること(※プロトコル使用の`Authorization`ではない点に注意)。  
+## その他ドキュメント
+実装を知りたい場合、以下使用Webアプリケーションフレームワークのドキュメントを参照する。
 
 Express  
 [https://expressjs.com/ja/](https://expressjs.com/ja/)
