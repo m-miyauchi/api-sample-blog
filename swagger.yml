@@ -94,24 +94,31 @@ components:
       properties:
         email:
           type: string
+          example: charlotte@de.witte
         password:
           type: string
+          example: password
     PutLoginResponse:
       type: object
       properties:
         isSuccessLogin:
           type: string
+          example: true
         member:
           type: object
           properties:
             name:
               type: string
+              example: Charlotte
             email:
               type: string
+              example: charlotte@de.witte
         token:
           type: string
+          example: tokenABC
         error:
           type: string
+          example: Login failed.
     GetArticlesResponse:
       type: array
       items:
@@ -119,10 +126,13 @@ components:
         properties:
           id:
             type: number
+            example: 12
           title:
             type: string
+            example: サンプルの投稿
           summary:
             type: string
+            example: サンプルの投稿本文。これはサンプルです
           updatedAt:
             type: string
     GetArticleResponse:
@@ -130,17 +140,22 @@ components:
       properties:
         id:
           type: number
+          example: 9
         title:
           type: string
+          example: サンプルの投稿
         body:
           type: string
+          example: サンプルの投稿本文。これはサンプルです
         author:
           type: object
           properties:
             memberId:
               type: number
+              example: 3
             name:
               type: string
+              example: Charlotte
         createdAt:
           type: string
         updatedAt:
@@ -153,8 +168,10 @@ components:
           properties:
             title:
               type: string
+              example: 新規投稿のタイトル
             body:
               type: string
+              example: 新規投稿の本文
     PutArticleRequestParams:
       type: object
       properties:
@@ -163,7 +180,10 @@ components:
           properties:
             id:
               type: number
+              example: 5
             title:
               type: string
+              example: 投稿更新のタイトル
             body:
               type: string
+              example: 投稿更新の本文
