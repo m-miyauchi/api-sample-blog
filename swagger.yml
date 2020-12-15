@@ -104,6 +104,7 @@ components:
         isSuccessLogin:
           type: string
           example: true
+          description: ここがfalseだとログインに失敗
         member:
           type: object
           properties:
@@ -119,6 +120,7 @@ components:
         error:
           type: string
           example: Login failed.
+          description: エラー時のみメッセージが入る
     GetArticlesResponse:
       type: array
       items:
