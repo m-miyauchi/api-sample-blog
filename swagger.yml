@@ -46,7 +46,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetArticlesRespose'
+                $ref: '#/components/schemas/GetArticlesResponse'
     post:
       summary: 新規投稿
       requestBody:
@@ -71,7 +71,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetArticleRespose'
+                $ref: '#/components/schemas/GetArticleResponse'
     put:
       summary: 投稿内容の更新
       requestBody:
@@ -93,7 +93,7 @@ components:
       type: object
     PutLoginResponse:
       type: object
-    GetArticlesRespose:
+    GetArticlesResponse:
       type: object
     GetArticleResponse:
       type: object
