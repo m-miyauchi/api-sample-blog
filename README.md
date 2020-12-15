@@ -29,7 +29,7 @@ $ ./scripts/drop_database.sh
 
 ## 実行
 ```
-$ npm run dev
+$ yarn dev
 ```
 
 ### 初期ユーザ
@@ -44,13 +44,13 @@ password: password
 ## テスト
 ```
 # 開発環境を実行中に、以下を実行
-$ npm run test
+$ yarn test
 ```
 
 ## プロダクションビルド
 ホスティングする場合に使用。DBコネクションの設定は、`src/modules/create_db_connection.ts`を参照する。  
 ```
-$ npm run build
+$ yarn build
 ```
 
 ## APIエンドポイント情報
