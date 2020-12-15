@@ -41,8 +41,12 @@ paths:
             schema:
               type: object
       responses:
-          '200':
-            description: OK
+        '200':
+          description: 成功時のレスポンス.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetArticlesRespose'
   /article/{id}:
     get:
       summary: 記事詳細取得
@@ -52,8 +56,12 @@ paths:
             schema:
               type: object
       responses:
-          '200':
-            description: OK
+        '200':
+          description: 成功時のレスポンス.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetArticleRespose'
 components:
    schemas:
     PutLoginParams:
