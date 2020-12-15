@@ -47,6 +47,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetArticlesRespose'
+    post:
+      summary: 新規投稿
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostArticleRequestParams'
+      responses:
+        '200':
+          description: 成功時のレスポンス.
   /article/{id}:
     get:
       summary: 記事詳細取得
@@ -62,6 +72,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetArticleRespose'
+    put:
+      summary: 投稿内容の更新
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PutArticleRequestParams'
+      responses:
+        '200':
+          description: 成功時のレスポンス.
+    delete:
+      summary: 投稿の削除
+      responses:
+        '200':
+          description: 成功時のレスポンス.
 components:
    schemas:
     PutLoginParams:
