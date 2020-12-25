@@ -2,17 +2,17 @@ import express, { Request, Response, Express } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
-// modules
+// Modules
 import createDBConnection from './modules/create_db_connection';
-// routes
+// Routes
 import loginRoute from './routes/login';
 import logoutRoute from './routes/logout';
 import articleRoutes from './routes/article';
-// constants
+// Constants
 import { SERVER_PORT } from './constants/server_port';
 
 async function main() {
-  // setup
+  // Setup
   const app: Express = express();
   app.use(morgan('dev'));
   app.use(helmet());
@@ -35,7 +35,7 @@ async function main() {
     next();
   });
 
-  // routes
+  // Routes
   app.use('/login', loginRoute);
   app.use('/logout', logoutRoute);
   app.use('/article', articleRoutes);
