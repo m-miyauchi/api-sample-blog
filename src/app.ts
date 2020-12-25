@@ -19,21 +19,21 @@ async function main() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
   // HTTP header settings
-  app.use(function (_req, res, next) {
-    res.header(
-      'Access-Control-Allow-Methods',
-      'POST, PUT, DELETE, GET, OPTIONS'
-    );
-    // Arrow CORS
-    if (app.get('env') === 'development') {
+  // Arrow CORS
+  if (app.get('env') === 'development') {
+    app.use(function (_req, res, next) {
       res.header('Access-Control-Allow-Origin', '*');
       res.header(
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept'
       );
-    }
-    next();
-  });
+      res.header(
+        'Access-Control-Allow-Methods',
+        'POST, PUT, DELETE, GET, OPTIONS'
+      );
+      next();
+    });
+  }
 
   // Routes
   app.use('/login', loginRoute);
