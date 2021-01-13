@@ -1,4 +1,4 @@
-// POST /article のリクエスト時パラメータ
+// PUT /article のリクエスト時パラメータ
 export type PutArticleRequestParams = {
   article: {
     id: number; // 記事ID
