@@ -5,7 +5,7 @@ import { PostArticleRequestParams } from '../src/types/api/post_article_request_
 import { PutLoginParams } from '../src/types/api/put_login_params';
 import createDbConnection from '../src/modules/create_db_connection';
 
-const NUM = 100;
+const NUM = 200;
 
 async function getToken(): Promise<string> {
   const member = new MemberModel();
