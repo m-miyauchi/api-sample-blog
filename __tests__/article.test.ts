@@ -20,12 +20,12 @@ describe('記事', () => {
       password: 'password',
     };
 
-    const r1: AxiosResponse<PutLoginResponse> = await axios.post(
+    const r1: AxiosResponse<PutLoginResponse> = await axios.put(
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
     params.email = 'amelie@lens';
-    const r2: AxiosResponse<PutLoginResponse> = await axios.post(
+    const r2: AxiosResponse<PutLoginResponse> = await axios.put(
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
