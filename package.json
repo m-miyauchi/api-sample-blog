@@ -9,7 +9,11 @@
     "dev": "docker-compose up -d && sleep 4 && nodemon",
     "lint": "eslint --fix src",
     "start": "node dist/bundle.js",
-    "test": "jest"
+    "test": "jest",
+    "seed:articles": "ts-node ./scripts/create_artilcles.ts",
+    "seed:member": "ts-node ./scripts/create_member.ts",
+    "seed:members": "ts-node ./scripts/create_members.ts",
+    "seed:all": "ts-node ./scripts/create_members.ts && ts-node ./scripts/create_artilcles.ts"
   },
   "repository": {
     "type": "git",

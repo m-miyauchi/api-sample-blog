@@ -20,6 +20,8 @@ $ npm i -g yarn
 $ yarn install
 # 失敗することがあるので、その場合再度以下を実行すると正常に終了する
 $ ./scripts/setup.sh
+# 以下は任意で、初期データを大量投入したい場合(seed)
+$ yarn seed:all
 ```
 
 ## DB初期化
