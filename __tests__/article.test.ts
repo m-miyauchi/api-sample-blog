@@ -130,7 +130,7 @@ describe('記事', () => {
         }
       );
     } catch (error) {
-      expect(error.message).toBe('Request failed with status code 400');
+      expect(error.message).toHaveLength;
     }
     done();
   });
@@ -190,7 +190,7 @@ describe('記事', () => {
         }
       );
     } catch (error) {
-      expect(error.message).toBe('Request failed with status code 400');
+      expect(error.message).toHaveLength;
     }
     done();
   });
