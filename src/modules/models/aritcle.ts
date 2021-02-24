@@ -55,13 +55,18 @@ export default class Article {
     }
   }
 
-  public async getArticles(): Promise<ArticleEnity[]> {
+  public async getArticles(
+    page?: number,
+    limit?: number
+  ): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
     try {
       a = await this.repository.find({
         where: {
           deleted: false,
         },
+        skip: page * limit,
+        take: limit,
       });
       return a;
     } catch (error) {
