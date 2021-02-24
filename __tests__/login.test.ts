@@ -13,7 +13,7 @@ describe('ログイン・ログアウト', () => {
       password: 'password',
     };
 
-    const r: AxiosResponse<PutLoginResponse> = await axios.post(
+    const r: AxiosResponse<PutLoginResponse> = await axios.put(
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
@@ -31,6 +31,6 @@ describe('ログイン・ログアウト', () => {
         },
       }
     );
-    expect(r.status).toBe(204);
+    expect(r.status).toBe(200);
   });
 });
