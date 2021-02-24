@@ -4,6 +4,7 @@ import AuthTokenModel from './auth_token';
 import CONNECTION_NAME from '../../constants/default_db_connection';
 import { PostArticleRequestParams } from '../../types/api/post_article_request_params';
 import { PutArticleRequestParams } from '../../types/api/put_article_request_params';
+import DEFAULT_LIMIT from '../../constants/default_limit';
 
 export default class Article {
   private connectionName = CONNECTION_NAME;
@@ -60,6 +61,11 @@ export default class Article {
     limit?: number
   ): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
+
+    if (page !== undefined && limit === undefined) {
+      limit = DEFAULT_LIMIT;
+    }
+
     try {
       a = await this.repository.find({
         where: {
