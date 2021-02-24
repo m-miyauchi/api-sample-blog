@@ -20,12 +20,12 @@ describe('記事', () => {
       password: 'password',
     };
 
-    const r1: AxiosResponse<PutLoginResponse> = await axios.post(
+    const r1: AxiosResponse<PutLoginResponse> = await axios.put(
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
     params.email = 'amelie@lens';
-    const r2: AxiosResponse<PutLoginResponse> = await axios.post(
+    const r2: AxiosResponse<PutLoginResponse> = await axios.put(
       `http://127.0.0.1:${SERVER_PORT}/login`,
       params
     );
@@ -130,7 +130,7 @@ describe('記事', () => {
         }
       );
     } catch (error) {
-      expect(error.message).toBe('Request failed with status code 400');
+      expect(error.message).toHaveLength;
     }
     done();
   });
@@ -190,7 +190,7 @@ describe('記事', () => {
         }
       );
     } catch (error) {
-      expect(error.message).toBe('Request failed with status code 400');
+      expect(error.message).toHaveLength;
     }
     done();
   });
