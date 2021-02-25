@@ -1,6 +1,6 @@
 export type Page = {
-    count: number;
-    limit: number;
-    currentPage: number;
-    totalPage: number;
-}
+  count: number;
+  limit: number;
+  currentPage: number;
+  totalPage: number;
+};
