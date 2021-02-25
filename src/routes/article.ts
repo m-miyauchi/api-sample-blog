@@ -16,14 +16,17 @@ router.get('/', async (req: Request, res: Response<GetArticlesRespose>) => {
   const r: GetArticlesRespose = {
     articles: [],
   };
+  const page = Number(req.query.page);
+  const limit = Number(req.query.limit);
+
   const articleModel = new ArticleModel();
-  const articles = articleModel.getArticles();
+  const articles = await articleModel.getArticles(page, limit);
 
   const tmp: ArticleSummary[] = (await articles).map((item) => {
     const a: ArticleSummary = {
       id: item.id,
-      title: item.title.substring(0, 29),
-      summary: item.body.substring(0, 199),
+      title: `${item.title.substring(0, 29)}...`,
+      summary: `${item.body.substring(0, 199)}...`,
       updatedAt: item.updated_at.toDateString(),
     };
     return a;
