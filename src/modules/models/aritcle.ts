@@ -62,7 +62,7 @@ export default class Article {
   ): Promise<ArticleEnity[]> {
     let a: ArticleEnity[] | undefined;
 
-    if (page !== undefined && limit === undefined) {
+    if (typeof page !== 'number' && typeof limit !== 'number') {
       limit = DEFAULT_LIMIT;
     }
 
